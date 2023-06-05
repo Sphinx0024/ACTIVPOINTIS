@@ -31,17 +31,300 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
+    <style>
+        #deconnexion {
+            position: absolute;
+            bottom: 20px;
+        
+        }
+
+        #formSearch input {
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            background-color: whitesmoke;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        #formSearch {
+          
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            if (sessionStorage.getItem('idSociete') === null) {
+                location.replace('../PointisWeb/loginPointis.html');
+            }
+            else {
+                var menu = document.getElementById('menu');
+                var idSoc = sessionStorage.getItem("idSociete");
+                let nom = sessionStorage.getItem("nameAd");
+                let prenom = sessionStorage.getItem("prenomAd");
+
+                let nomPrenom = prenom + " " + nom;
+
+                var admin = document.getElementById("pageAdminUtil");
+                var equipeDiv = document.getElementById("equip");
+                var equipePage = document.getElementById("pageEquipeUtil");
+
+
+                if (sessionStorage.getItem('idEmployeUser') === null) {
+                    sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeNOUser'));
+                    //admin.style.display = "none";
+                    equipeDiv.style.display = "none";
+                    //equipePage.style.display = "none";
+                    menu.innerHTML = `
+                                    <li>
+                                        <a class="" onclick="appel('board')" aria-expanded="false"
+                                            style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-th-large text-light" aria-hidden="true"></i>
+                                            <span class="nav-text">Tableau de bord</span>
+                                        </a>
+                                    </li><br />
+                                    <li id="pointage">
+                                        <a  class="" onclick="appel('pointage')" aria-expanded="false" style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-map text-light " aria-hidden="true"></i>
+                                            <span class="nav-text">Pointage</span>
+                                        </a>
+                                    </li><br />
+                                    <li id="profile">
+                                        <a class="" onclick="appel('profile')" aria-expanded="false"
+                                            style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-user-circle-o text-light" aria-hidden="true"></i>
+                                            <span class="nav-text">Profile</span>
+                                        </a>
+                                    </li><br />
+                                    <li id="deconnexion">
+                                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
+                                            <span class="nav-text">Deconnexion</span>
+                                        </a>
+                                    </li>
+                                    `;
+
+                    fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
+                        .then(res => res.json())
+                        .then(data => {
+                            //console.log(data);
+                            for (let item of data) {
+                                let resp = item.Responsable;
+                                let mail = item.Email;
+                                //console.log(res);
+                                if (nomPrenom == resp) {
+                                    equipeDiv.style.display = "flex";
+                                    //equipePage.style.display = "flex";
+                                    menu.innerHTML = `
+                                                    <li>
+                                                        <a class="" onclick="appel('board')" aria-expanded="false"
+                                                            style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-th-large text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Tableau de bord</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="pointage">
+                                                        <a class="" onclick="appel('pointage')" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-cog text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Pointage</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li>
+                                                        <a class="" onclick="appel('equipe')" aria-expanded="false"
+                                                            style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-map text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Equipe</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="profile">
+                                                        <a class="" onclick="appel('profile')" aria-expanded="false"
+                                                            style="color: white;">
+                                                                <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                                <i class="fa fa-user-circle-o text-light" aria-hidden="true"></i>
+                                                                <span class="nav-text">Profile</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="deconnexion">
+                                                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white; margin-top: 150px;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Deconnexion</span>
+                                                        </a>
+                                                    </li>
+                                                                    `;
+                                }
+                            }
+                        });
+                }
+
+                else {
+                    sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeUser'));
+                    //admin.style.display = "flex";
+                    equipeDiv.style.display = "none";
+                    //equipePage.style.display = "none";
+                    menu.innerHTML = `
+                                                    <li>
+                                                        <a class="" onclick="appel('board')" aria-expanded="false"
+                                                            style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-th-large text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Tableau de bord</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="pointage">
+                                                        <a class="" onclick="appel('pointage')" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-map text-light " aria-hidden="true"></i>
+                                                            <span class="nav-text">Pointage</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="Administrateur">
+                                                        <a class="" href="index.html" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-cog text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Administrateur</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="profile">
+                                                        <a class="" onclick="appel('profile')" aria-expanded="false"
+                                                            style="color: white;">
+                                                                <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                                <i class="fa fa-user-circle-o text-light" aria-hidden="true"></i>
+                                                                <span class="nav-text">Profile</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="deconnexion">
+                                                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Deconnexion</span>
+                                                        </a>
+                                                    </li>
+                                                                    `;
+
+
+                    fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
+                        .then(res => res.json())
+                        .then(data => {
+                            //console.log(data);
+                            for (let item of data) {
+                                let resp = item.Responsable;
+                                console.log(resp);
+                                if (nomPrenom == resp) {
+                                    equipeDiv.style.display = "flex";
+                                    //equipePage.style.display = "flex";
+                                    menu.innerHTML = `
+                                                    <li>
+                                                        <a class="" onclick="appel('board')" aria-expanded="false"
+                                                            style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-th-large text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Tableau de bord</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li>
+                                                        <a class="" onclick="appel('pointage')" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-map text-light " aria-hidden="true"></i>
+                                                            <span class="nav-text">Pointage</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li>
+                                                        <a class=""  onclick="appel('equipe')" aria-expanded="false"
+                                                            style="color: white;">
+                                                            <i class="fa fa-pie-chart text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Equipe</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li>
+                                                        <a class="" href="index-1.html" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-cog text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Administrateur</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li>
+                                                        <a class="" onclick="appel('profile')" aria-expanded="false"
+                                                            style="color: white;">
+                                                                <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                                <i class="fa fa-user-circle-o text-light" aria-hidden="true"></i>
+                                                                <span class="nav-text">Profile</span>
+                                                        </a>
+                                                    </li><br />
+                                                    <li id="deconnexion">
+                                                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white;">
+                                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                                            <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
+                                                            <span class="nav-text">Deconnexion</span>
+                                                        </a>
+                                                    </li>
+                                                                    `;
+                                }
+                            }
+                        });
+                }
+
+            }
+
+
+        });
+
+        function appel(lien) {
+
+            //$('#pageBoardUtil').click(function () {
+                //alert("test");
+                var lienComplet = 'pages/utilisateur/'+lien+'.html';
+                $.ajax({
+                    
+                    url: lienComplet,
+                    method: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#content-main').html(data);
+                    },
+                    error: function () {
+                        $('#content-main').html('Erreur lors du chargement des données.');
+                    }
+                });
+           // });
+        }
+
+    </script>
+
+
+    <script>
+        function employeID() {
+            var id = sessionStorage.getItem('idEmployeUser');
+            if (sessionStorage.getItem('idEmployeUser') === null) {
+                id = sessionStorage.getItem('idEmployeNOUser');
+            }
+            return id;
+        }
         // Ou est stocke Id sessionStorage de societé chez employé
         // let sessionId = sessionStorage.getItem("emp"),
-        var pointage = document.getElementById('pointage-value'),
-            selectPointage = document.getElementById('option-affichage'),
-            selectPointage2 = document.querySelector('.option-affichage'),
-            sessionId = sessionStorage.getItem('idSociete'),
+        var pointage = document.getElementById('pointage-value');
+        selectPointage = document.getElementById('option-affichage');
+        selectPointage2 = document.querySelector('.option-affichage');
+        sessionEmpId = employeID();
+        sessionId = sessionStorage.getItem('idSociete');
+        let nom = sessionStorage.getItem("nameAd");
+        let prenom = sessionStorage.getItem("prenomAd");
 
-            entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId,
+
+
+
+        var entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId,
             sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId,
             absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId,
 
@@ -49,10 +332,17 @@
             retardWeek = 'https://face.activactions.net/api/Pointage/LateWeek/' + sessionId,
             retardMonth = 'https://face.activactions.net/api/Pointage/LateMounth/' + sessionId,
 
-            utilisateurs = 'https://face.activactions.net/api/Connexion/Get/' + sessionId,
-            employes = 'https://face.activactions.net/api/Employes/Get/' + sessionId,
+            RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
+            retardSemaine = 'https://face.activactions.net/api/Pointage/retardSemaine/' + sessionEmpId,
+            retardMois = 'https://face.activactions.net/api/Pointage/retardMois/' + sessionEmpId,
 
-            url20Jour = 'https://face.activactions.net/api/Pointage/DayTwenty/' + sessionId,
+            utilisateurs = 'https://face.activactions.net/api/Connexion/Get/' + sessionId,
+            employes = 'https://face.activactions.net/api/Employes/GetRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom,
+            //employes = 'https://face.activactions.net/api/Employes/Get/' + sessionId;
+
+            employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
+
+            url20Jour = 'https://face.activactions.net/api/Pointage/PointageJour/' + sessionId,
             pointageDay = "https://face.activactions.net/api/Pointage/DayTwenty/" + sessionId,
             pointageWeek = "https://face.activactions.net/api/Pointage/Week/" + sessionId,
             pointageMonth = "https://face.activactions.net/api/Pointage/Mounth/" + sessionId,
@@ -67,7 +357,13 @@
 
             absenceDay = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId,
             absenceWeek = 'https://face.activactions.net/api/Pointage/AbsenceSemaine/' + sessionId,
-            absenceMonth = 'https://face.activactions.net/api/Pointage/AbsenceMois/' + sessionId;
+            absenceMonth = 'https://face.activactions.net/api/Pointage/AbsenceMois/' + sessionId,
+
+            urlJour = 'https://face.activactions.net/api/Pointage/Jour/' + sessionEmpId;
+
+        //urlEquipe = 'https://face.activactions.net/api/Pointage/PointageJour/' + sessionEmpId;
+
+
 
         // Retard ?
 
@@ -92,6 +388,8 @@
         }
 
     </script>
+
+
 
 
 
@@ -158,70 +456,9 @@
 
                     <ul class="clearfix">
                         <li class="icons">
-                            <span id="nameAd"></span>
+                            <span id="nameConnect"></span>&nbsp;
                             (<em id="societeAd">ACTIV</em>)
                         </li>
-                        <!--<li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                                <i class="mdi mdi-bell-outline"></i>
-                                <span class="badge badge-pill gradient-2">3</span>
-                            </a>
-                            <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-                                <div class="dropdown-content-heading d-flex justify-content-between">
-                                    <span class="">2 New Notifications</span>
-                                    <a href="javascript:void()" class="d-inline-block">
-                                        <span class="badge badge-pill gradient-2">5</span>
-                                    </a>
-                                </div>
-                                <!--
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i
-                                                        class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Events near you</h6>
-                                                    <span class="notification-text">Within next 5 days</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i
-                                                        class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Event Started</h6>
-                                                    <span class="notification-text">One hour ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i
-                                                        class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Event Ended Successfully</h6>
-                                                    <span class="notification-text">One hour ago</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i
-                                                        class="icon-present"></i></span>
-                                                <div class="notification-content">
-                                                    <h6 class="notification-heading">Events to Join</h6>
-                                                    <span class="notification-text">After two days</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                                -->
-
-                            <!--</div>
-                        </li>-->
 
                         <li class="icons dropdown">
                             <div class="user-img c-pointer position-relative" data-toggle="dropdown">
@@ -243,12 +480,6 @@
                                         </li>
 
                                         <hr class="my-2">
-                                        <!--                                         
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                                    Screen</span></a>
-                                        </li>
-                                         -->
                                         <li><a href="deconnect.html"><i class="icon-key"></i> <span>Logout</span></a>
                                         </li>
                                     </ul>
@@ -259,75 +490,50 @@
                 </div>
             </div>
         </div>
-        <!--**********************************
-            Header end ti-comment-alt
-        ***********************************-->
-
-        <!--**********************************
-            Sidebar start
-        ***********************************-->
         <div class="nk-sidebar">
             <div class="nk-nav-scroll" style="background-color: #203f9a;">
                 <ul class="metismenu text-light" id="menu" style="background-color: #203f9a;">
                     <!-- <li class="nav-label">Pages</li> -->
-                    <br/>
+                    <br />
+                    <!--
                     <li>
-                        <a class="" href="Accueil.html" aria-expanded="false"
+                        <a class="" href="javascript:void()" id="pageBoardUtil" aria-expanded="false"
                             style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
-                            <!--<i class="fa fa-cog text-light" aria-hidden="true"></i>-->
-                            <span class="nav-text">Mon Espace Personnel</span>
-                        </a>
-                    </li><br/>
-                    <li>
-                        <a class="" href="javascript:void()" id="pageBoard" aria-expanded="false" style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
                             <i class="fa fa-th-large text-light" aria-hidden="true"></i>
                             <span class="nav-text">Tableau de bord</span>
                         </a>
-                    </li><br/>
+                    </li><br />
                     <li>
-                        <a class="" href="javascript:void()" id="pageSecteur" aria-expanded="false"
+                        <a class="" href="javascript:void()" id="pageEquipeUtil" aria-expanded="false"
                             style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
-                            <i class="fa fa-pie-chart text-light" aria-hidden="true"></i>
-                            <span class="nav-text">Secteur d'activités</span>
-                        </a>
-                    </li><br/>
-                    <li>
-                        <a class="" href="javascript:void()" id="pagePointage" aria-expanded="false"
-                            style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
                             <i class="fa fa-map text-light" aria-hidden="true"></i>
-                            <span class="nav-text">Listes de pointage</span>
+                            <span class="nav-text">Equipe</span>
                         </a>
-                    </li><br/>
-                    <li>
-                        <a class="" href="javascript:void()" id="pageParametre" aria-expanded="false"
+                    </li><br />
+                    <li id="Profile">
+                        <a class="" href="javascript:void()" id="pageParametreUtil" aria-expanded="false"
                             style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
                             <i class="fa fa-cog text-light" aria-hidden="true"></i>
-                            <span class="nav-text">Parametre</span>
+                            <span class="nav-text">Profile</span>
                         </a>
-                    </li><br/>
-                    
+                    </li><br />
+                    <li id="parametre">
+                        <a class="" href="index.html" id="pageAdminUtil" aria-expanded="false" style="color: white;">
+                            <i class="fa fa-cog text-light" aria-hidden="true"></i>
+                            <span class="nav-text">Administration</span>
+                        </a>
+                    </li><br />
                     <li>
-                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white;">
-                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                        <a class="" href="deconnect.html" aria-expanded="false"
+                            style="color: white; margin-top: 150px;">
                             <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
                             <span class="nav-text">Deconnexion</span>
                         </a>
                     </li>
+                -->
                 </ul>
             </div>
         </div>
-        <!--**********************************
-            Sidebar end
-        ***********************************-->
-
-        <!--**********************************
-            Content body start
-        ***********************************-->
 
         <div class="content-body" id="content-main">
 
@@ -339,20 +545,8 @@
                             <div class="carousel-inner">
                                 <div class="carousel-item active d-flex flex-row justify-content-around">
                                     <img class="d-block w-25" src="images/import/Code-QR.png" alt="First slide">
-                                    <p>Mon espace de suivie<br /> d'administration <br /> POINTIS !!</p>
+                                    <p>Mon espace de suivie<br /> Utilisateur <br /> POINTIS !!</p>
                                 </div>
-                                <!--
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="..." alt="Second slide">
-                                    <p>Mon espace de suivie d'administration Pointis</p>
-
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="..." alt="Third slide">
-                                    <p>Mon espace de suivie d'administration Pointis</p>
-
-                                </div>
-                               -->
 
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
@@ -376,88 +570,71 @@
             </div>
             <div class="row m-3">
                 <div class="col">
-                    <h3 class="text-success">Les dernieres transaction</h3>
+                    <h3 class="text-success">Pointage du jour</h3>
                 </div>
             </div>
             <div class="row m-3">
-                <div class="col-12 bg-light border border-1 rounded-3">
+                <div class="col-8 bg-light border border-1 rounded-3">
                     <table class="table">
                         <thead class="" style="border-bottom: 2px solid black;">
                             <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">EMPLOYE(E)S</th>
-                                <th scope="col">FONCTIONS</th>
+                                <th scope="col">DATE</th>
+                                <th scope="col">HORAIRE</th>
                                 <th scope="col">ENTREE</th>
                                 <th scope="col">SORTIE</th>
                             </tr>
                         </thead>
                         <tbody id="corps">
                             <script type="text/javascript">
-
                                 let infos = '';
                                 //var data = {}
 
                                 // fetch('https://face.activactions.net/api/Pointage/Week/3367', {
-                                fetch(url20Jour, {
-                                    method: 'GET',
-                                    headers: {
-                                        'content-type': 'application/json'
-                                    },
-                                    // body: JSON.stringify(data)
-                                })
+                                fetch(urlJour)
                                     .then(res => res.json())
                                     .then(data => {
                                         console.log(data);
                                         for (let item of data) {
                                             // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
-                                            infos += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTitre}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
+                                            infos += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EquipeHeureDebut} ${item.EquipeHeureFin}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
                                         }
                                         document.getElementById('corps').innerHTML = infos;
                                     });
                             </script>
 
-                            <!--
-
-                            <tr>
-                                <td>Serme Mariam</td>
-                                <td>Developpeur</td>
-                                <td>08h20min10s</td>
-                                <td>19h00min20s</td>
-                                <td>3 retard en 10 jours</td>
-                            </tr>
-                            <tr>
-                                <td>Serme Mariam</td>
-                                <td>Developpeur</td>
-                                <td>08h20min10s</td>
-                                <td>19h00min20s</td>
-                                <td>3 retard en 10 jours</td>
-                            </tr>
-                            <tr>
-                                <td>Serme Mariam</td>
-                                <td>Developpeur</td>
-                                <td>08h20min10s</td>
-                                <td>19h00min20s</td>
-                                <td>3 retard en 10 jours</td>
-                            </tr>
-                            -->
-
-                            <!--                             
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Developpeur</td>
-                                <td>08h20min10s</td>
-                                <td>19h00min20s</td>
-                                <td>3 retard en 10 jours</td>
-                            </tr> 
-                            -->
-
                         </tbody>
                     </table>
                 </div>
-                <!--<div class="col-3">
-                    <div class="card bg-light mb-3 text-center shadow-lg" style="max-width: 18rem;">
+                <div class="col-4" id="equip">
+                    <div class="card bg-light mb-4 text-center shadow-lg" style="max-width: 25rem;">
                         <div class="card-header">Mon équipe</div>
-                        <div class="card-body d-flex flex-column">
+                        <table class="table">
+                            <thead class="" style="border-bottom: 2px solid black;">
+                                <tr>
+                                    <th scope="col">NOM</th>
+                                    <th scope="col">PRENOMS</th>
+                                    <th scope="col">TELEPHONE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="corpequipe">
+                                <script>
+                                    let infosEmp = '';
+                                    fetch(employes)
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            console.log(data);
+                                            for (let item of data) {
+                                                infosEmp += `<tr><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Telephone}</td></tr>`;
+
+                                            }
+                                            document.getElementById('corpequipe').innerHTML = infosEmp;
+                                        });
+                                </script>
+
+                            </tbody>
+
+                        </table>
+                        <!--<div class="card-body d-flex flex-column">
                             <div class="d-flex flex-row justify-content-between m-1">
                                 <img src="" alt="" class="border border-1 border-dark rounded-5" width="35" height="35">
                                 <img src="" alt="" class="border border-1 border-dark rounded-5" width="35" height="35">
@@ -468,49 +645,21 @@
                                 <img src="" alt="" class="border border-1 border-dark rounded-5" width="35" height="35">
                                 <img src="" alt="" class="border border-1 border-dark rounded-5" width="35" height="35">
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-                </div>-->
+                </div>
 
             </div>
 
         </div>
 
-
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
-        <!--**********************************
-            Footer start
-        ***********************************-->
-        <!-- 
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a>
-                    2018</p>
-            </div>
-        </div> 
-        -->
-        <!--**********************************
-            Footer end
-        ***********************************-->
     </div>
-    <!--**********************************
-        Main wrapper end
-    ***********************************-->
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-
 
     <script>
-        var nom = document.getElementById('nameAd'),
-            nomSoc = document.getElementById('societeAd');
+        var nomC = document.getElementById('nameConnect');
+        var nomSoc = document.getElementById('societeAd');
 
-        nom.innerHTML = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
+        nomC.innerHTML = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
         nomSoc.innerHTML = sessionStorage.getItem("nameSoc");
 
     </script>

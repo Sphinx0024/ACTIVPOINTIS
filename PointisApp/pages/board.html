@@ -111,7 +111,7 @@
     <div class="row m-3 d-flex justify-content-between">
         <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
             style="background-color: whitesmoke;">
-            <img src="images/import/clock.png" alt="" width="50px">
+            <img src="image/6.png" alt="" width="50px">
             <div class="d-flex flex-column">
                 <span id="retard">
                     <script>
@@ -136,7 +136,7 @@
         </div>
         <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
             style="background-color: whitesmoke;">
-            <img src="images/import/absence.png" alt="" width="50px">
+            <img src="image/7.png" alt="" width="50px">
             <div class="d-flex flex-column">
                 <span id="absence">
                     <script>
@@ -176,13 +176,13 @@
                                 .then(res => res.json())
                                 .then(data => {
                                     absenceInner = data;
-                                    absenceInf = '0'+absenceInner;
+                                    absenceInf = '0' + absenceInner;
 
                                     if (absenceInner > 0) {
-                                        if(absenceInner < 10){
+                                        if (absenceInner < 10) {
                                             document.getElementById('presence').innerHTML = absenceInf;
                                         }
-                                        else{
+                                        else {
                                             document.getElementById('presence').innerHTML = absenceInner;
                                         }
                                     } else {
@@ -205,10 +205,12 @@
 
             </div>
         </div>
+        <!--         
         <div class="col-12 col-lg-3 d-flex flex-row justify-content-center align-items-center">
             <img src="images/import/team.png" alt="" width="100px">
             <span class="fw-bold" style="font-size: 50px;">50%</span>
-        </div>
+        </div> 
+        -->
         <div class="col-12 col-lg-3 d-flex flex-column">
             <!--<div class="d-flex flex-column">
                 <h2>Absence mensuelles</h2>

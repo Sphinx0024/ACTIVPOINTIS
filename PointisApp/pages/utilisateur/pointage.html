@@ -108,14 +108,14 @@
         <div class="col-5">
             <h2>Liste des pointages</h2>
         </div>
-        <form class="col-7 d-flex flex-row justify-content-center align-items-center">
+        <form class="col-7 d-flex flex-row justify-content-center align-items-center" id="formSearch">
             <!--<label for="">Rechercher par</label>
             <input type="text" placeholder="Nom" id="name-search">-->
             <label for="">Du</label>
-            <input type="date" placeholder="Date de debut" id="start-search">
+            <input type="date" class="btn" placeholder="Date de debut" id="start-search">
             <label for="">Au</label>
-            <input type="date" placeholder="Date de fin" id="end-search">
-            <input type="button" onclick="appelPagePointage('search','Recherche')" value="Rechercher">
+            <input type="date" class="btn" placeholder="Date de fin" id="end-search">
+            <input type="button" class="btn p-1" onclick="appelPagePointage('search','Recherche')" value="Rechercher" style="background-color: #8dc63f; color: white;">
         </form>
 
 

@@ -10,6 +10,8 @@
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="#">
   <link href="css/FormPointis.css" rel="stylesheet">
+
+  
   <script type="text/javascript">
     var onloadCallback = function() {
       grecaptcha.render('html_element', {
@@ -29,76 +31,51 @@
         <img src="images/media/img-gps.png" class="absolute inset-0 "/>
       </div> -->
 
+
+  <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+    <div class="container-fluid">
+      <div class="row align-items-center">
+
+        <div class="col-6 col-xl-2">
+          <div class="mb-0 site-logo">
+            <!-- <a href="index.html" class="mb-0"><img src="images/_pointIS.png" class="img-fluid" width="40%" alt=""><span class="text-primary"></span> </a> -->
+            <a href="index.html"><img src="images/_pointIS.png"  width="100"></a>
+          
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </header>
+
+  <!-- 
   <nav class="">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
 
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <!-- <div class="flex flex-shrink-0 items-center">
-              <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-              <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-            </div> -->
+
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <!-- <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> -->
               <a href="index.html"><img src="images/_pointIS.png" class="w-16 ml-3"></a>
-              
             </div>
-            
-          </div>
-        </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" class="rounded-full border-gray-300 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <!-- <span class="sr-only">View notifications</span>
-              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-              </svg> -->
-
-          </button>
-
-          <!-- Profile dropdown -->
-          <div class="relative ml-3">
-            <div>
-              <!-- <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                </button> -->
-              <!-- <span>Se connecter</span> -->
-            </div>
-
-            <!--
-                Dropdown menu, show/hide based on menu state.
-    
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
 
           </div>
         </div>
+
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
-      </div>
-    </div>
-  </nav>
 
-  <div class=" rounded-2xl formbold-main-wrapper bg-slate-100 mr-10  ml-60 mt-0 mb-10 pr-4  shadow-lg shadow-back-500/50">
+  </nav> 
+-->
+
+  <!-- <div class=" rounded-2xl formbold-main-wrapper bg-slate-100 mr-10  ml-60 mt-0 mb-10 pr-4  shadow-lg shadow-back-500/50"> -->
+  <div class=" rounded-2xl formbold-main-wrapper bg-slate-100  m-auto pr-4 mt-10  shadow-lg shadow-back-500/50">
     <!-- Author: FormBold Team -->
     <!-- Learn More: https://formbold.com -->
     <!-- <div class="formbold-form-wrapper"> -->
@@ -168,7 +145,7 @@
         <div>
           <div class="formbold-input-flex">
             <div>
-              <label for="firstname" class="formbold-form-label"> Adresse mail  </label>
+              <label for="firstname" class="formbold-form-label"> Adresse mail </label>
               <input type="text" name="firstname" placeholder="Adresse mail personnel" id="email_admin" class="formbold-form-input" />
             </div>
 
@@ -183,7 +160,7 @@
               <label for="lastname" class="formbold-form-label "> Sexe </label>
               <select id="sex_admin" style="width:75%;height:75%;">
                 <option value="M" class="text-center">Masculin</option>
-                <option value="F"class="text-center">Feminin</option>
+                <option value="F" class="text-center">Feminin</option>
 
               </select>
 
@@ -257,12 +234,12 @@
                 <br />
                    Favicon icon <label class="font-medium">Fonction :</label>
                 <span id="fonc_Af"></span>
-              </div>--> 
+              </div>-->
               <div class="">
                 <label class="font-medium">Telephone :</label>
                 <span id="tel_Af"></span>
               </div>
-                 <!-- Favicon icon  <div class="">
+              <!-- Favicon icon  <div class="">
                 <label class="font-medium">Matricule:</label>
                 <span id="mat_Af" class="span"></span>
               </div>-->
@@ -288,19 +265,20 @@
 
       <div class="formbold-form-btn-wrapper">
 
-        <button class="formbold-back-btn " id="formbold_btn" style="background-color:transparent;color:#000;"  >
+        <button class="formbold-back-btn " id="formbold_btn" style="background-color:transparent;color:#000;">
           Retour
         </button>
 
-    
 
-      <button class="formbold-btn" id="formbold_btn">
-        Suivant
+
+        <button class="formbold-btn" id="formbold_btn">
+          Suivant
         </button>
       </div>
-    
+
     </form>
   </div>
+
 
 
   <script>
@@ -336,7 +314,7 @@
         Subject: "Enregistrement de " + raisonSoConst + " sur POINTIS !",
         Body: ebody
       }).then(
-        
+
         message => location.replace('./inscriptionreussi.html')
         //message => location.replace('./succes.php')
         //message => alert(message)
@@ -389,7 +367,7 @@
         Email: ep,
         Telephone: tp,
         Sexe: s,
-       
+
       };
 
       fetch('https://face.activactions.net/api/Societe/Inscription', {
@@ -437,8 +415,8 @@
           return false;
         } else {
           // enregistrement();
-        return true;
-      //   location.replace('./emailverifie.html');
+          return true;
+          //   location.replace('./emailverifie.html');
         }
       })
       //captcha verified
@@ -460,7 +438,7 @@
       var champ4 = document.getElementById('email');
       var champ5 = document.getElementById('tel_entreprise');
 
-      if (champ1.value === '' || champ2.value === '' || champ3.value === '' || champ4.value === '' ) {
+      if (champ1.value === '' || champ2.value === '' || champ3.value === '' || champ4.value === '') {
         alert('Veuillez remplir tous les champs avant de passer à l\'étape suivante.')
         return false
       }
@@ -474,8 +452,8 @@
       var champ2 = document.getElementById('prenom_admin');
       var champ3 = document.getElementById('email_admin');
       var champ4 = document.getElementById('tel_admin');
-   //   var champ5 = document.getElementById('matricule_admin');
-    //  var champ6 = document.getElementById('fn_admin');
+      //   var champ5 = document.getElementById('matricule_admin');
+      //  var champ6 = document.getElementById('fn_admin');
 
       if (champ1.value === '' || champ2.value === '' || champ3.value === '' || champ4.value === '') {
         alert('Veuillez remplir tous les champs avant de passer à l\'étape suivante.');
@@ -570,8 +548,8 @@
         recap()
         enregistrement()
         //redirectionApresDelai()
-     //   location.replace('./emailverifie.html');
- 
+        //   location.replace('./emailverifie.html');
+
       }
 
       //recuperation des donnees
@@ -584,8 +562,8 @@
       var p = document.getElementById('prenom_admin').value
       var ep = document.getElementById('email_admin').value
       var tp = document.getElementById('tel_admin').value
-     // var m = document.getElementById('matricule_admin').value
-    //  var f = document.getElementById('fn_admin').value
+      // var m = document.getElementById('matricule_admin').value
+      //  var f = document.getElementById('fn_admin').value
       var s = document.getElementById('sex_admin').value
 
 
@@ -601,8 +579,8 @@
         Email: ep,
         Telephone: tp,
         Sexe: s
-      
-       
+
+
       };
       console.log(data);
 
@@ -615,7 +593,7 @@
       document.getElementById('email_pAf').innerHTML = data.Email
       document.getElementById('nom_Af').innerHTML = data.Nom
       document.getElementById('prenom_Af').innerHTML = data.Prenom
-   //   document.getElementById('fonc_Af').innerHTML = data.Titre
+      //   document.getElementById('fonc_Af').innerHTML = data.Titre
       document.getElementById('tel_Af').innerHTML = data.Telephone
       //document.getElementById('mat_Af').innerHTML = data.Matricule
       document.getElementById('sex_Af').innerHTML = data.Sexe
