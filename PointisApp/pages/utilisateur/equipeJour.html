@@ -1,0 +1,127 @@
+<div class="row m-3">
+    <div class="col-6 d-flex flex-column">
+        <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3" style="background-color: whitesmoke;">
+            <img src="images/import/clock.png" alt="" width="50px">
+            <div class="d-flex flex-column">
+                <span id="retard">
+                    <script>
+                        var retardInner = '';
+                        var data = {}
+                        fetch(RetardJour)
+                            .then(res => res.json())
+                            .then(data => {
+                                retardInner = data;
+
+                                if (retardInner > 0) {
+                                    document.getElementById('retard').innerHTML = retardInner;
+                                } else {
+                                    document.getElementById('retard').innerHTML = '00';
+                                }
+                            });
+                    </script>
+                </span>
+                <span>Retard</span>
+            </div>
+        </div><br /><br />
+        <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3" style="background-color: whitesmoke;">
+            <img src="images/import/absence.png" alt="" width="50px">
+            <div class="d-flex flex-column">
+                <span id="absence">
+                    <script>
+                        var absenceInner = '';
+                        var data = {}
+                        fetch(absenceDay)
+                            .then(res => res.json())
+                            .then(data => {
+                                for (let item of data) {
+                                    absenceInner = item.Total;
+
+                                    if (absenceInner > 0) {
+                                        document.getElementById('absence').innerHTML = absenceInner;
+                                    } else {
+                                        document.getElementById('absence').innerHTML = '00';
+                                    }
+                                }
+                            });
+                    </script>
+                </span>
+                <span>Absence</span>
+
+            </div>
+        </div><br /><br />
+
+        <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3" style="background-color: whitesmoke;">
+            <img src="images/import/attendance.png" alt="" width="50px">
+            <div class="d-flex flex-column">
+                <span>
+                    <span id="presence">
+                        <script>
+                            var absenceInner = '';
+                            var data = {}
+                            fetch(entree)
+                                // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
+                                .then(res => res.json())
+                                .then(data => {
+                                    absenceInner = data;
+                                    absenceInf = '0' + absenceInner;
+
+                                    if (absenceInner > 0) {
+                                        if (absenceInner < 10) {
+                                            document.getElementById('presence').innerHTML = absenceInf;
+                                        }
+                                        else {
+                                            document.getElementById('presence').innerHTML = absenceInner;
+                                        }
+                                    } else {
+                                        document.getElementById('presence').innerHTML = '00';
+                                    }
+                                });
+                        </script>
+                    </span>
+                </span>
+                <span>Pointage</span>
+            </div>
+        </div><br />
+
+    </div>
+    <div class="col-6">
+        <canvas class="shadow-lg" id="myChartEquipe" style="width:100%;max-width:600px"></canvas>
+    </div>
+
+</div>
+
+<div class="row m-3">
+    <div class="col bg-light border border-1 border-dark rounded-3 m-0 p-0">
+        <table class="table w-100">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">DATE</th>
+                    <th scope="col">NOM</th>
+                    <th scope="col">PRENOMS</th>
+                    <th scope="col">TELEPHONE</th>
+                    <th scope="col">ENTREES</th>
+                    <th scope="col">SORTIES</th>
+                </tr>
+            </thead>
+            <tbody id="corpequipeall">
+                <script>
+                    
+                    fetch(urlJour)
+                        .then(res => res.json())
+                        .then(data => {
+                            let infosEquipe = '';
+                            console.log(data);
+                            for (let item of data) {
+                                infosEmp += `<tr><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Telephone}</td></tr>`;
+
+                            }
+                            document.getElementById('corpequipeall').innerHTML = infosEquipe;
+                        });
+                </script>
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

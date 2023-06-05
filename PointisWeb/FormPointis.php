@@ -230,19 +230,10 @@
 
 
             <div>
-              <!-- <div class="">
-                <br />
-                   Favicon icon <label class="font-medium">Fonction :</label>
-                <span id="fonc_Af"></span>
-              </div>-->
               <div class="">
                 <label class="font-medium">Telephone :</label>
                 <span id="tel_Af"></span>
               </div>
-              <!-- Favicon icon  <div class="">
-                <label class="font-medium">Matricule:</label>
-                <span id="mat_Af" class="span"></span>
-              </div>-->
               <div class="">
                 <label class="font-medium">Sexe :</label>
                 <span id="sex_Af"></span>
@@ -292,7 +283,7 @@
       const space = " ";
       //const defaultMDPConst = password;
       const idConConst = idconnex;
-      const lien = "http://localhost:8080/web-main/web-main/emailverifie.html?mail=" + emailAdConst + "&id=" + idConConst;
+      const lien = "http://localhost:8080/ACTIVPOINTIS/PointisWeb/emailverifie.html?mail=" + emailAdConst + "&id=" + idConConst;
       //format text 
       let ebody = `
                 <p>Cher, </p> ${preAdConst} ${space} ${nomAdConst}

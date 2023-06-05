@@ -1,0 +1,124 @@
+<div class="row m-3 d-flex justify-content-between">
+    <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
+        style="background-color: whitesmoke;">
+        <img src="images/import/clock.png" alt="" width="50px">
+        <div class="d-flex flex-column">
+            <span id="retard">
+                <script>
+                    var retardInner = '';
+                    var data = {}
+                    fetch(RetardDay)
+                        // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
+                        .then(res => res.json())
+                        .then(data => {
+                            retardInner = data;
+
+                            if (retardInner > 0) {
+                                document.getElementById('retard').innerHTML = convertion(retardInner);
+                                //document.getElementById('absence').innerHTML = ;
+                            } else {
+                                document.getElementById('retard').innerHTML = '00';
+                            }
+                        });
+                </script>
+            </span>
+            <span>Retard</span>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
+        style="background-color: whitesmoke;">
+        <img src="images/import/absence.png" alt="" width="50px">
+        <div class="d-flex flex-column">
+            <span id="absence">
+                <script>
+                    var absenceInner = '';
+                    var data = {}
+                    fetch(absenceDay)
+                        .then(res => res.json())
+                        .then(data => {
+                            for (let item of data) {
+                                absenceInner = item.Total;
+                                absenceAff = '0' + absenceInner;
+
+                                if (absenceInner > 0) {
+                                    if (absenceInner < 10) {
+                                        document.getElementById('absence').innerHTML = absenceAff;
+                                    }
+                                    else {
+                                        document.getElementById('absence').innerHTML = absenceInner;
+                                    }
+                                } else {
+                                    document.getElementById('absence').innerHTML = '00';
+                                }
+                            }
+                        });
+                </script>
+            </span>
+            <span>Absence</span>
+        </div>
+    </div>
+    <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
+        style="background-color: whitesmoke;">
+        <img src="images/import/attendance.png" alt="" width="50px">
+        <div class="d-flex flex-column">
+                <span id="presence">
+                    <script>
+                        var presence = '';
+                        var data = {}
+                        fetch(entree)
+                            .then(res => res.json())
+                            .then(data => {
+                                presence = data;
+                                presenceAff = '0' + presence;
+
+                                if (absenceInner > 0) {
+                                    if (presence < 10) {
+                                        document.getElementById('presence').innerHTML = presenceAff;
+                                    }
+                                    else {
+                                        document.getElementById('presence').innerHTML = presence;
+                                    }
+                                } else {
+                                    document.getElementById('presence').innerHTML = '00';
+                                }
+                            });
+                    </script>
+                </span>
+                <span>Pointage</span>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row m-3">
+    <div class="col bg-light border border-1 border-dark rounded-3 m-0 p-0">
+        <table class="table w-100">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">DATE</th>
+                    <th scope="col">ENTREES</th>
+                    <th scope="col">SORTIES</th>
+                </tr>
+            </thead>
+            <tbody id="corpsPoint">
+
+                <script type="text/javascript">
+                    let infosPointJour = '';
+                    console.log(urlJour);
+                    fetch(urlJour)
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            for (let item of data) {
+                                // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
+                                infosPointJour += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
+                            }
+                            document.getElementById('corpsPoint').innerHTML = infosPointJour;
+                        });
+                </script>
+            </tbody>
+        </table>
+    </div>
+
+</div>
