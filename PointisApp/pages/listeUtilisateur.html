@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <table class="table  ">
+        <thead style="border-color: transparent;">
+            <tr>
+                <th>Login</th>
+                <th>Mot de passe</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="corpsUser">
+            <script type="text/javascript">
+                let infosUser = '';
+                fetch('https://face.activactions.net/api/Connexion/Get/' + socID)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        for (let item of data) {
+                            infosUser += 
+                                `<tr>
+                                    <td>${item.Login}</td><td>${item.Password}</td><td>${item.Role}</td>
+                                    <td><button class="btn" Onclick="modifier(${item.ConnexionID},'updateUtilisateur')" style="padding: 10px 10px ;margin-left:115%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/crayon.png" class="img-fluid" width="40px" alt=""></button></td>
+                                    <td><button class="btn" Onclick="badgeMail('${item.Login}','qrcode.html')" style="display:block;padding: 10px 10px ;margin-left:75%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/des-employes.png" class="img-fluid"  width="40px" alt=""></button></td>
+                                    <td><button class="btn" Onclick="supprimer('https://face.activactions.net/api/Connexion/Delete',${item.ConnexionID},'affichageutilisateur')" style="display:block;padding: 10px 10px ;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/supprimer.png" class="img-fluid" width="40px" alt=""></button></td>
+                                </tr>`;
+                        }
+                        document.getElementById('corpsUser').innerHTML = infosUser;
+                        //place.innerHTML = infos;
+                    });
+
+
+
+            </script>
+
+
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+</div>
+
+
+<script>
+    document.getElementById('add').innerHTML = 'Liste des utilisateurs';
+
+</script>

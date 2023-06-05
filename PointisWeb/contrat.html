@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>POINTIS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+      shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+      rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+  </head>
+<script>
+    function check(){
+  var checkbox = document.getElementById("myCheckbox");
+   
+
+  if (checkbox.checked) {
+
+    console.log("La case à cocher est cochée !");
+    location.replace('./FormPointis.php');
+    // Autres actions à effectuer lorsque la case à cocher est cochée
+  } else {
+    console.log("La case à cocher n'est pas cochée !");
+    alert("erreur");
+    // Autres actions à effectuer lorsque la case à cocher n'est pas cochée
+  }
+}
+
+</script>
+
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="background-image: url(images/NUAGE.png);background-size: cover;background-repeat: no-repeat;">
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header"style="background-color:#f3F3F9; color:blue;">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Contrat de confidentialite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color:#D2122E;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="font-family: Arial, Helvetica, sans-serif;">
+        VEUILLEZ LIRE ATTENTIVEMENT CE CONTRAT DE LICENCE DE LOGICIEL (« CONTRAT ») AVANT DE TÉLÉCHARGER LE LOGICIEL. EN CLIQUANT SUR LE BOUTON "J'ACCEPTE" CI-DESSOUS, VOUS INDIQUEZ VOTRE ACCEPTATION DES TERMES DE CET ACCORD LÉGAL ET EXÉCUTOIRE ET CONSENTEZ À ÊTRE LIÉ ET À DEVENIR PARTIE À CET ACCORD. SI VOUS N'ACCEPTEZ PAS TOUS LES TERMES DE CET ACCORD, CLIQUEZ SUR LE BOUTON "Je ne suis pas d'accord" ET LE PROCESSUS D'INSTALLATION NE CONTINUERA PAS. <br>
+
+        1. Concession de licence. Il s'agit d'une licence, et non d'un contrat de vente, entre vous, l'utilisateur final, et Dell SonicWALL, Inc. (« Dell SonicWALL »). Le terme « Logiciel » comprend tous les logiciels Dell SonicWALL et tiers qui vous sont fournis avec le produit Dell SonicWALL, ainsi que toute documentation d'accompagnement, toutes les mises à jour et améliorations du Logiciel qui vous sont fournies par Dell SonicWALL, à sa discrétion. Dell SonicWALL vous accorde une licence non transférable (sauf dans les cas prévus à la section 3 (« Transfert ») ci-dessous) pour utiliser le Logiciel conformément aux conditions énoncées dans le présent Contrat de licence. Le Logiciel est "en cours d'utilisation" sur un ordinateur lorsqu'il est chargé dans la mémoire temporaire (c'est-à-dire RAM) ou installé dans la mémoire permanente (par exemple, disque dur, CD-ROM ou autre périphérique de stockage). Vous pouvez reproduire une (1) copie de le Logiciel uniquement à des fins de sauvegarde et d'archivage. <br>
+        
+        2. Limites d'utilisation. Vous ne pouvez pas tenter, et si vous êtes une société, vous ferez de votre mieux pour empêcher vos employés et sous-traitants de tenter de (a) modifier, traduire, désosser, décompiler, désassembler, créer des œuvres dérivées basées sur, sous-licencier ou distribuer le Logiciel ou la documentation qui l'accompagne ; (b) louer ou donner à bail tout droit sur le Logiciel ou la documentation qui l'accompagne sous quelque forme que ce soit à toute personne ; ou (c) supprimer tout avis, étiquette ou marque de propriété sur le Logiciel, la documentation et les conteneurs.  <br>
+        
+        3. Transfert. Vous pouvez transférer (et non louer ou donner à bail) le Logiciel à un tiers de manière permanente, à condition que : (i) le tiers reçoive une copie du présent Contrat et accepte par écrit d'être lié par ses termes et conditions, (ii ) vous effacez ou détruisez toutes les autres copies du Logiciel, et (iii) vous vous conformez à tout moment à toutes les lois et réglementations américaines applicables en matière de contrôle des exportations.<br>
+        
+       <br>
+          <label class="custom-control fill-checkbox">
+            <input type="checkbox" id="myCheckbox" class="fill-control-input" style="margin-left: -50%;">
+            <span class="fill-control-indicator"></span>
+            <span class="fill-control-description">J'accepte les conditions detaillees ci-dessous</span>
+          </label>
+     
+     
+
+
+      </div>
+      <div class="modal-footer" style="background-color:#203F9A; color:#fff;">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#DC6502; color:#fff;" onclick="check()">Validez</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color:#DC6502; color:#fff;">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <div id="overlayer"></div>
+    <div class="loader">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+
+    <div class="site-wrap">
+
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <header class="site-navbar js-sticky-header site-navbar-target"
+        role="banner">
+
+        <div class="container">
+          <div class="row align-items-center">
+
+            <div class="col-6 col-xl-2">
+              <div class="mb-0 site-logo"><a href="index.html" class="mb-0"><img
+                    src="images/_pointIS.png"
+                    class="img-fluid" width="40%" alt=""><span
+                    class="text-primary"></span> </a></div>
+            </div>
+
+            <div class="col-12 col-md-10 d-none d-xl-block">
+              <nav class="site-navigation position-relative text-right"
+                role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none
+                  d-lg-block">
+                  <!-- .site-wrap     <li><a href="#home-section" class="nav-link">Home</a></li>
+                <li class="has-children">
+                  <a href="#features-section" class="nav-link">Features</a>
+                  <ul class="dropdown">
+                    <li><a href="#" class="nav-link">Money Saving</a></li>
+                    <li><a href="#" class="nav-link">Powerful Apps</a></li>
+                    <li><a href="#" class="nav-link">Efficient Support</a></li>
+                    <li><a href="#" class="nav-link">Innovative Technologies</a></li>
+                    <li><a href="#" class="nav-link">Corporate Solutions</a></li>
+                    <li class="has-children">
+                      <a href="#">More Links</a>
+                      <ul class="dropdown">
+                        <li><a href="#">Menu One</a></li>
+                        <li><a href="#">Menu Two</a></li>
+                        <li><a href="#">Menu Three</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+
+
+                <li><a href="#blog-section" class="nav-link">Blog</a></li>
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>-->
+                  <!--  <li class="social"><a href="#contact-section" class="nav-link"><span class="icon-facebook"></span></a></li>
+                <li class="social"><a href="#contact-section" class="nav-link"><span class="icon-twitter"></span></a></li>-->
+                  <li class="social" style="font-weight: 500;"> <a href="index.html"
+                      class="nav-link"><span class=""> <img
+                          src="images/home.png" alt="" width="90%"></span></a>&nbsp;&nbsp;Accueil</li>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3"
+              style="position: relative; top: 3px;"><a href="#"
+                class="site-menu-toggle js-menu-toggle float-right"><span
+                  class="icon-menu h3 text-black"></span></a>
+            </div>
+
+          </div>
+        </div>
+
+      </header>
+
+      <div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="button" value="Information sur le contrat" id="voir plus" class="btn  text-xl-center"style="margin-left:38%;background-color:#203F9A;color:white;font-weight:bold;" data-toggle="modal" data-target="#exampleModalScrollable">
+
+           <!--  <div class="card" style="width:45%;">
+                <div class="card-header" style="font-weight:bolder;background-color:#514491;color:#fff;" >
+                Contrat de confidentialite
+                </div>
+              Loader End    <div class="card-body" style="background-color:#514491;color:#fff;font-weight:800;">
+                  <h5 class="card-title"></h5>
+                  <p class="card-text">
+                   
+
+VEUILLEZ LIRE ATTENTIVEMENT CE CONTRAT DE LICENCE DE LOGICIEL (« CONTRAT ») AVANT DE TÉLÉCHARGER LE LOGICIEL. EN CLIQUANT SUR LE BOUTON "J'ACCEPTE" CI-DESSOUS, VOUS INDIQUEZ VOTRE ACCEPTATION DES TERMES DE CET ACCORD LÉGAL ET EXÉCUTOIRE ET CONSENTEZ À ÊTRE LIÉ ET À DEVENIR PARTIE À CET ACCORD. SI VOUS N'ACCEPTEZ PAS TOUS LES TERMES DE CET ACCORD, CLIQUEZ SUR LE BOUTON "Je ne suis pas d'accord" ET LE PROCESSUS D'INSTALLATION NE CONTINUERA PAS. <br>
+
+1. Concession de licence. Il s'agit d'une licence, et non d'un contrat de vente, entre vous, l'utilisateur final, et Dell SonicWALL, Inc. (« Dell SonicWALL »). Le terme « Logiciel » comprend tous les logiciels Dell SonicWALL et tiers qui vous sont fournis avec le produit Dell SonicWALL, ainsi que toute documentation d'accompagnement, toutes les mises à jour et améliorations du Logiciel qui vous sont fournies par Dell SonicWALL, à sa discrétion. Dell SonicWALL vous accorde une licence non transférable (sauf dans les cas prévus à la section 3 (« Transfert ») ci-dessous) pour utiliser le Logiciel conformément aux conditions énoncées dans le présent Contrat de licence. Le Logiciel est "en cours d'utilisation" sur un ordinateur lorsqu'il est chargé dans la mémoire temporaire (c'est-à-dire RAM) ou installé dans la mémoire permanente (par exemple, disque dur, CD-ROM ou autre périphérique de stockage). Vous pouvez reproduire une (1) copie de le Logiciel uniquement à des fins de sauvegarde et d'archivage. <br>
+
+2. Limites d'utilisation. Vous ne pouvez pas tenter, et si vous êtes une société, vous ferez de votre mieux pour empêcher vos employés et sous-traitants de tenter de (a) modifier, traduire, désosser, décompiler, désassembler, créer des œuvres dérivées basées sur, sous-licencier ou distribuer le Logiciel ou la documentation qui l'accompagne ; (b) louer ou donner à bail tout droit sur le Logiciel ou la documentation qui l'accompagne sous quelque forme que ce soit à toute personne ; ou (c) supprimer tout avis, étiquette ou marque de propriété sur le Logiciel, la documentation et les conteneurs.  <br>
+
+3. Transfert. Vous pouvez transférer (et non louer ou donner à bail) le Logiciel à un tiers de manière permanente, à condition que : (i) le tiers reçoive une copie du présent Contrat et accepte par écrit d'être lié par ses termes et conditions, (ii ) vous effacez ou détruisez toutes les autres copies du Logiciel, et (iii) vous vous conformez à tout moment à toutes les lois et réglementations américaines applicables en matière de contrôle des exportations.<br>
+
+
+                    <div class="form-check w-50">
+		            	<label class="custom-control fill-checkbox">
+										<input type="checkbox" id="myCheckbox" class="fill-control-input" style="margin-left:-50%;">
+										<span class="fill-control-indicator"></span>
+										<span class="fill-control-description">J'accepte les conditions detaillees ci-dessous</span>
+									</label>
+								</div>
+                    </p>
+                    <br>
+                    <br>
+                  <input type="button" value="Voir plus" id="voir plus" class="btn  text-xl-center"style="margin-left:25%;background-color:transparent;color:white;" data-toggle="modal" data-target="#exampleModalLong">
+                  <input type="button" value="Validez" id="submit"   onclick="check()" class="btn btn-primary text-xl-center"style="margin-left:25%;background-color:white;color:#000;">
+               
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+            
+        
+
+      </div> <!-- .site-wrap -->
+     
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/jquery.countdown.min.js"></script>
+      <script src="js/jquery.easing.1.3.js"></script>
+      <script src="js/aos.js"></script>
+      <script src="js/jquery.fancybox.min.js"></script>
+      <script src="js/jquery.sticky.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="script.js"></script>
+
+      <script src="js/main.js"></script>
+
+    </body>
+
+  </html>

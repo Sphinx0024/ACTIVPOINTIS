@@ -1,0 +1,48 @@
+<div class="table-responsive">
+    <table class="table">
+        <!-- <thead style="border-color: transparent;"> -->
+        <thead>
+            <tr style="display:flex; flex-direction: row; justify-content: space-between;">
+                <th>Titre</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="corps">
+            <script type="text/javascript">
+                let infosTravailDelete = '';
+                fetch('https://face.activactions.net/api/EquipeTravail/Get/' + socID)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        for (let item of data) {
+                            infosTravailDelete += `
+                            <tr style="display:flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                                <td>${item.Title}</td><td>${item.HeureDebutService}</td><td>${item.HeureFinService}</td>
+                                <td >
+                                    <button class="btn"Onclick="modifier(${item.ID},'updateHoraire.html')"style="padding: 10px 10px ;margin-left:2px;background-color:#F3F3F9;width:5px; background: url(image/crayon.png); background-repeat: no-repeat; background-size: 20px; background-position: center;"></button>
+                                    <button class="btn" Onclick ="supprimer('https://face.activactions.net/api/EquipeTravail/Delete',${item.ID},'affichageenregi')" style="padding: 10px 10px ;margin-left:2px;border-color:darkgray;width:5px; background: url(image/supprimer.png); background-repeat: no-repeat; background-size: 20px; background-position: center;"></button>
+                                </td>
+                            </tr>`;
+                        }
+                        document.getElementById('corps').innerHTML = infosTravailDelete;
+                        //place.innerHTML = infos;
+                    });
+
+            </script>
+
+
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+
+</div>
+
+
+<script>
+    document.getElementById('add').innerHTML = 'Liste horaire';
+
+</script>
