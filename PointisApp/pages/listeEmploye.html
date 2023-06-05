@@ -15,10 +15,11 @@
 
         <tbody id="corps">
             <script type="text/javascript">
-                let infosDelete = '';
                 fetch('https://face.activactions.net/api/Employes/Get/' + socID)
                     .then(res => res.json())
                     .then(data => {
+                        let infosDelete = '';
+
                         console.log(data);
                         for (let item of data) {
                             infosDelete += `

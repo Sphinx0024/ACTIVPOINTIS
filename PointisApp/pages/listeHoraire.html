@@ -11,10 +11,11 @@
         </thead>
         <tbody id="corps">
             <script type="text/javascript">
-                let infosTravailDelete = '';
                 fetch('https://face.activactions.net/api/EquipeTravail/Get/' + socID)
                     .then(res => res.json())
                     .then(data => {
+                        let infosTravailDelete = '';
+
                         console.log(data);
                         for (let item of data) {
                             infosTravailDelete += `

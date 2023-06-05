@@ -1,4 +1,4 @@
-<div class="row  d-flex flex-row justify-content-center bg-light rounded shadow py-5 px-4 m-auto w-50"
+<div class="row  d-flex flex-row justify-content-center bg-light rounded shadow py-5 px-4 m-auto w-100"
     id="qrCode-corps">
     <div class="col-4 d-flex flex-column">
         <div class="d-flex flex-column">
@@ -29,7 +29,7 @@
     //import code
     function qrGenerate() {
         var nom = document.getElementById('nom').value;
-        var socID = sessionStorage.getItem("socID");
+        var socID = sessionStorage.getItem('idSociete');
         var badge = sessionStorage.getItem("badge");
         var badgeMail = sessionStorage.getItem("badge-mail");
 
@@ -48,7 +48,7 @@
                 for (let item of data) {
                     var employeid = item.EmployeID;
                     var employemail = item.Email;
-                    if (employeid == badge || employemail == badgeMail ) {
+                    if (employeid == badge || employemail == badgeMail) {
                         no = item.Nom;
                         pre = item.Prenom;
                         em = item.Email;

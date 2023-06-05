@@ -10,10 +10,11 @@
         </thead>
         <tbody id="corpsUser">
             <script type="text/javascript">
-                let infosUser = '';
                 fetch('https://face.activactions.net/api/Connexion/Get/' + socID)
                     .then(res => res.json())
                     .then(data => {
+                        let infosUser = '';
+
                         console.log(data);
                         for (let item of data) {
                             infosUser +=
