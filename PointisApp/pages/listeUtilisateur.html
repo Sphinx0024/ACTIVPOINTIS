@@ -16,11 +16,11 @@
                     .then(data => {
                         console.log(data);
                         for (let item of data) {
-                            infosUser += 
+                            infosUser +=
                                 `<tr>
                                     <td>${item.Login}</td><td>${item.Password}</td><td>${item.Role}</td>
-                                    <td><button class="btn" Onclick="modifier(${item.ConnexionID},'updateUtilisateur')" style="padding: 10px 10px ;margin-left:115%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/crayon.png" class="img-fluid" width="40px" alt=""></button></td>
-                                    <td><button class="btn" Onclick="badgeMail('${item.Login}','qrcode.html')" style="display:block;padding: 10px 10px ;margin-left:75%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/des-employes.png" class="img-fluid"  width="40px" alt=""></button></td>
+                                    <td><button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightUpdate" aria-controls="offcanvasRight" class="btn" Onclick="modifier(${item.ConnexionID},'updateUtilisateur')" style="padding: 10px 10px ;margin-left:115%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/crayon.png" class="img-fluid" width="40px" alt="" id="update"></button></td>
+                                    <td><button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightBadge" aria-controls="offcanvasRight" class="btn" Onclick="badgeMail('${item.Login}','qrcode.html')" style="display:block;padding: 10px 10px ;margin-left:75%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/des-employes.png" class="img-fluid"  width="40px" alt="" id="badge"></button></td>
                                     <td><button class="btn" Onclick="supprimer('https://face.activactions.net/api/Connexion/Delete',${item.ConnexionID},'affichageutilisateur')" style="display:block;padding: 10px 10px ;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/supprimer.png" class="img-fluid" width="40px" alt=""></button></td>
                                 </tr>`;
                         }
@@ -38,6 +38,25 @@
 
         </tfoot>
     </table>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightUpdate" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Modification</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="showUdpade">
+
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightBadge" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Badge</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="showBadgeMail">
+
+        </div>
+    </div>
 
 </div>
 

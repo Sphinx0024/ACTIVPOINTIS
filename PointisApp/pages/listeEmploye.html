@@ -12,6 +12,7 @@
                 <th>Action</th>
             </tr>
         </thead>
+
         <tbody id="corps">
             <script type="text/javascript">
                 let infosDelete = '';
@@ -24,10 +25,9 @@
                             <tr style="display:flex; flex-direction: row; justify-content: space-between; align-items: center;">
                                 <td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Email}</td><td>${item.Telephone}</td><td>${item.Titre}</td>
                                 <td >
-                                    <button class="btn" Onclick="modifier(${item.EmployeID},'updateEmployes.html')" style="padding: 10px 10px ;margin-left:2px;background-color:#F3F3F9;width:5px; background: url(image/crayon.png); background-repeat: no-repeat; background-size: 20px; background-position: center;"></button>
-                                    <button class="btn" Onclick ="badge(${item.EmployeID},'qrcode.html')" style="padding: 10px 10px ;margin-left:2px;border-color:darkgray;width:5px; background: url(image/des-employes.png); background-repeat: no-repeat; background-size: 20px; background-position: center;"></button>
+                                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightUpdate" aria-controls="offcanvasRight" class="btn" Onclick="modifier(${item.EmployeID},'updateEmployes.html')" style="padding: 10px 10px ;margin-left:2px;background-color:#F3F3F9;width:5px; background: url(image/crayon.png); background-repeat: no-repeat; background-size: 20px; background-position: center;" id="update"></button>
+                                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightBadge" aria-controls="offcanvasRight" class="btn" Onclick ="badge(${item.EmployeID},'qrcode.html')" style="padding: 10px 10px ;margin-left:2px;border-color:darkgray;width:5px; background: url(image/des-employes.png); background-repeat: no-repeat; background-size: 20px; background-position: center;" id="badge"></button>
                                     <button class="btn" Onclick ="supprimer('https://face.activactions.net/api/Employes/Delete',${item.EmployeID},'affichageenregi')" style="padding: 10px 10px ;margin-left:2px;border-color:darkgray;width:5px; background: url(image/supprimer.png); background-repeat: no-repeat; background-size: 20px; background-position: center;"></button>
-                                
                                 </td>
                             </tr>`;
                         }
@@ -43,6 +43,26 @@
 
         </tfoot>
     </table>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightUpdate" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Modification</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="showUdpade">
+
+        </div>
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightBadge" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Badge</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body" id="showBadge">
+
+        </div>
+    </div>
+
 
 </div>
 

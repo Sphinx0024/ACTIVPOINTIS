@@ -1,6 +1,6 @@
 <script>
 
-    let socID = sessionStorage.getItem("socID");
+    let socID = sessionStorage.getItem('idSociete');
 
     function ajouterSociete() {
 
@@ -154,7 +154,7 @@
             method: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#show').html(data);
+                $('#showUdpade').html(data);
             },
             error: function () {
                 // $('#reponseAjax').html('Erreur lors du chargement des données.');
@@ -179,7 +179,7 @@
             method: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#show').html(data);
+                $('#showBadge').html(data);
             },
             error: function () {
                 // $('#reponseAjax').html('Erreur lors du chargement des données.');
@@ -196,7 +196,7 @@
             method: 'GET',
             dataType: 'html',
             success: function (data) {
-                $('#show').html(data);
+                $('#showBadgeMail').html(data);
             },
             error: function () {
                 // $('#reponseAjax').html('Erreur lors du chargement des données.');
@@ -382,8 +382,8 @@
     </div>
 
     <div class="row d-flex flex-row m-3" id="show">
-        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight" id="addEmploye">
+        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="addEmploye">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                 class="bi bi-person-plus-fill text-light" viewBox="0 0 16 16">
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -395,19 +395,21 @@
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Ajouter un employe</h5>
+                <h5 id="offcanvasRightLabel">Ajouter un employé</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" id="showAddEmployes">
-                
+
             </div>
         </div>
         <script>
 
 
         </script>
-        <button class="col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" id="addHoraire">
+        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightTwo" aria-controls="offcanvasRight"
+            id="addHoraire">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                 class="bi bi-clock-fill text-light" viewBox="0 0 16 16">
                 <path
@@ -415,10 +417,22 @@
             </svg>
             <span>Ajouter horaire</span>
         </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightTwo" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Ajouter une horaire</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" id="showAddHoraire">
+
+            </div>
+        </div>
         <script>
 
         </script>
-        <button class="col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" id="addUtilisateur">
+        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightThree" aria-controls="offcanvasRight"
+            id="addUtilisateur">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                 class="bi bi-person-plus-fill text-light" viewBox="0 0 16 16">
                 <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
@@ -427,6 +441,17 @@
             </svg>
             <span>Ajouter utilisateur</span>
         </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightThree"
+            aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Ajouter un utilisateur</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body" id="showAddUtilisateur">
+
+            </div>
+        </div>
 
         <script>
 
@@ -497,10 +522,10 @@
                 method: 'GET',
                 dataType: 'html',
                 success: function (data) {
-                    $('#show').html(data);
+                    $('#showAddHoraire').html(data);
                 },
                 error: function () {
-                    $('#show').html('Erreur lors du chargement des données.');
+                    $('#showAddHoraire').html('Erreur lors du chargement des données.');
                 }
             });
         });
@@ -514,10 +539,10 @@
                 method: 'GET',
                 dataType: 'html',
                 success: function (data) {
-                    $('#show').html(data);
+                    $('#showAddUtilisateur').html(data);
                 },
                 error: function () {
-                    $('#show').html('Erreur lors du chargement des données.');
+                    $('#showAddUtilisateur').html('Erreur lors du chargement des données.');
                 }
             });
         });
