@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="#">
   <link href="css/FormPointis.css" rel="stylesheet">
 
-  
+
   <script type="text/javascript">
     var onloadCallback = function() {
       grecaptcha.render('html_element', {
@@ -40,8 +40,8 @@
         <div class="col-6 col-xl-2">
           <div class="mb-0 site-logo">
             <!-- <a href="index.html" class="mb-0"><img src="images/_pointIS.png" class="img-fluid" width="40%" alt=""><span class="text-primary"></span> </a> -->
-            <a href="index.html"><img src="images/_pointIS.png"  width="100"></a>
-          
+            <a href="index.html"><img src="images/_pointIS.png" width="100"></a>
+
           </div>
         </div>
 
@@ -75,49 +75,57 @@
 -->
 
   <!-- <div class=" rounded-2xl formbold-main-wrapper bg-slate-100 mr-10  ml-60 mt-0 mb-10 pr-4  shadow-lg shadow-back-500/50"> -->
-  <div class=" rounded-2xl formbold-main-wrapper bg-slate-100  m-auto pr-4 mt-10  shadow-lg shadow-back-500/50">
+  <div class=" rounded-2xl formbold-main-wrapper bg-slate-100  m-auto  shadow-lg shadow-back-500/50" style="width: 70%;">
     <!-- Author: FormBold Team -->
     <!-- Learn More: https://formbold.com -->
     <!-- <div class="formbold-form-wrapper"> -->
     <div class="img">
       <img src="images/img-gps.png" class="object-cover rounded-l-2xl " />
     </div>
-    <form class="">
+    <form class=" m-3">
 
-      <div class="formbold-steps ml-2 mt-0">
+      <div class="formbold-steps ml-2 mt-0" style=" display: flex; flex-direction: row ; justify-content: center;">
 
-        <ul>
-          <li class="formbold-step-menu1 active">
-            <span>1</span>
+        <ul style=" display: flex; flex-direction: row ;  align-items: center;">
+          <li class="formbold-step-menu1 active" style="display: flex; flex-direction: column;">
+            <span id="li1">1</span>
             Société
           </li>
-          <li class="formbold-step-menu2">
-            <span>2</span>
+          <li id="li12" class="li12" style="height:3px; width:100px; border-radius:15px/15px;"></li>
+          <li class="formbold-step-menu2" style="display: flex; flex-direction: column;">
+            <span id="li2">2</span>
             Administrateur
           </li>
-          <li class="formbold-step-menu3">
-            <span>3</span>
+          <li id="li23" class="li23" style="height:3px; width:80px; border-radius:15px/15px;"></li>
+          <li class="formbold-step-menu3" style="display: flex; flex-direction: column;">
+            <span id="li3">3</span>
             Resumé
           </li>
         </ul>
       </div>
 
       <div class="formbold-form-step-1 active ml-2">
+        <div>
+          <label for="firstname" class="formbold-form-label"> Nom de l'entreprise </label>
+          <input type="text" name="nom_entrep" placeholder="Nom de l'entreprise" id="user_name" class="formbold-form-input " />
+        </div>
+        <div>
+          <label for="lastname" class="formbold-form-label"> RCCM </label>
+          <input type="text" name="rccm" placeholder="RCCM" id="RCCM" class="formbold-form-input" />
+        </div>
+        <div>
+          <label for="dob" class="formbold-form-label"> Localisation </label>
+          <input type="text" name="loc" placeholder="Localisation" id="localisation" class="formbold-form-input" />
+        </div>
         <div class="formbold-input-flex">
-          <div>
-            <label for="firstname" class="formbold-form-label"> Nom de l'entreprise </label>
-            <input type="text" name="nom_entrep" placeholder="Nom de l'entreprise" id="user_name" class="formbold-form-input " />
-          </div>
-          <div>
-            <label for="lastname" class="formbold-form-label"> RCCM </label>
-            <input type="text" name="rccm" placeholder="RCCM" id="RCCM" class="formbold-form-input" />
-          </div>
+
+
         </div>
 
         <div class="formbold-input-flex">
           <div>
-            <label for="dob" class="formbold-form-label"> Localisation </label>
-            <input type="text" name="loc" placeholder="Localisation" id="localisation" class="formbold-form-input" />
+            <label for="address" class="formbold-form-label"> Telephone </label>
+            <input type="text" name="address" id="tel_entreprise" placeholder="Telephone" class="formbold-form-input" />
           </div>
           <div>
             <label for="email" class="formbold-form-label"> Adresse mail </label>
@@ -125,10 +133,7 @@
           </div>
         </div>
 
-        <div>
-          <label for="address" class="formbold-form-label"> Telephone </label>
-          <input type="text" name="address" id="tel_entreprise" placeholder="Telephone" class="formbold-form-input" />
-        </div>
+
       </div>
 
       <div class="formbold-form-step-2 ml-2">
@@ -176,44 +181,45 @@
           <!-- <h1>Informations sur l'entreprise</h1> -->
 
 
-          <div class="grid grid-cols-2" style="font-size: small;">
+          <div class="grid grid-cols-2" style="font-size: small; display:flex; flex-direction: column">
+            <div class="h-10 font-bold">Société</div>
             <div>
-
               <div>
-                <div class="h-10 font-bold">Société</div>
-                <label class="font-medium">Nom:</label>
-                <span id="nom_eAf" class="span"></span>
+
+                <div>
+                  <label class="font-medium">Nom:</label>
+                  <span id="nom_eAf" class="span"></span>
+                </div>
+                <div class="">
+                  <label class="font-medium">RCCM :</label>
+                  <span id="rccm_Af"></span>
+                </div>
+                <div class="">
+                  <label class="font-medium">Localisation :</label>
+                  <span id="loc_Af"></span>
+                </div>
               </div>
-              <div class="">
-                <label class="font-medium">RCCM :</label>
-                <span id="rccm_Af"></span>
-              </div>
-              <div class="">
-                <label class="font-medium">Localisation :</label>
-                <span id="loc_Af"></span>
-              </div>
-            </div>
-            <div>
-              <div class="">
-                <label class="font-medium">Email :</label>
-                <span id="email_Af"></span>
-              </div>
-              <div class="">
-                <label class="font-medium">Telephone :</label>
-                <span id="tel_eAf"></span>
+              <div>
+                <div class="">
+                  <label class="font-medium">Email :</label>
+                  <span id="email_Af"></span>
+                </div>
+                <div class="">
+                  <label class="font-medium">Telephone :</label>
+                  <span id="tel_eAf"></span>
+                </div>
               </div>
             </div>
           </div>
+
           <!-- <h1>Informations sur l admin/h1>  -->
 
           <!-- <div class="h-10 font-bold">Administrateur</div> -->
-          <div class=" grid grid-cols-2 " style="font-size: small;">
+          <div class=" grid grid-cols-2 " style="font-size: small;display:flex; flex-direction: column;">
             <!-- <span class="font-bold ">Administrateur </span>  -->
-
+            <div class="h-10 font-bold">Administrateur</div>
             <div>
-
               <div class="">
-                <div class="h-10 font-bold">Administrateur</div>
                 <label class="font-medium">Email :</label>
                 <span id="email_pAf"></span>
               </div>
@@ -428,10 +434,30 @@
       var champ3 = document.getElementById('localisation');
       var champ4 = document.getElementById('email');
       var champ5 = document.getElementById('tel_entreprise');
+      var li1 = document.getElementById('li1');
+
+      var li12 = document.getElementById('li12');
+
 
       if (champ1.value === '' || champ2.value === '' || champ3.value === '' || champ4.value === '') {
-        alert('Veuillez remplir tous les champs avant de passer à l\'étape suivante.')
+        alert('Veuillez remplir tous les champs avant de passer à l\'étape suivante.');
+
+        li1.style.background = '#DDE3EC';
+        li1.style.color = '#536387';
+
+        li12.style.background = '#DDE3EC';
+
+
         return false
+      } else {
+
+        li1.style.background = '#DC6502';
+        li1.style.color = '#FFFFFF';
+
+        li12.style.background = '#DC6502';
+
+
+
       }
 
       return true
@@ -443,12 +469,33 @@
       var champ2 = document.getElementById('prenom_admin');
       var champ3 = document.getElementById('email_admin');
       var champ4 = document.getElementById('tel_admin');
+
+      var li2 = document.getElementById('li2');
+
+      var li23 = document.getElementById('li23');
+
       //   var champ5 = document.getElementById('matricule_admin');
       //  var champ6 = document.getElementById('fn_admin');
 
       if (champ1.value === '' || champ2.value === '' || champ3.value === '' || champ4.value === '') {
         alert('Veuillez remplir tous les champs avant de passer à l\'étape suivante.');
+
+        li2.style.background = '#DDE3EC';
+        li2.style.color = '#536387';
+
+        li23.style.background = '#DDE3EC';
+
+
         return false;
+      } else {
+        li2.style.background = '#DC6502';
+        li2.style.color = '#FFFFFF';
+
+        li23.style.background = '#DC6502';
+
+
+
+
       }
 
       return true;
