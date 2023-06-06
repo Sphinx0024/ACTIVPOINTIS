@@ -32,7 +32,7 @@
         url20Jour = 'https://face.activactions.net/api/Pointage/DayTwenty/' + sessionId,
         pointageDay = "https://face.activactions.net/api/Pointage/DayTwenty/" + sessionId,
         pointageWeek = "https://face.activactions.net/api/Pointage/Week/" + sessionId,
-        pointageMonth = "https://face.activactions.net/api/Pointage/Mounth/" + sessionId,
+        pointageMonth = "https://face.activactions.net/api/Pointage/Month/" + sessionId,
 
         sortiesDay = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId,
         sortiesWeek = 'https://face.activactions.net/api/Pointage/SortieSemaine/' + sessionId,
@@ -75,10 +75,39 @@
 
 <div class="m-3">
     <div class="row m-3">
-        <div class="col-9">
+        <div class="col-5">
             <h2>Liste des pointages</h2>
         </div>
-    
+        <form class="col-7 d-flex flex-row justify-content-center align-items-center" id="formSearch">
+            <label for="name-search">Nom</label>
+            <!-- <input type="text" placeholder="Nom" id="name-search"> -->
+            <select class="form-control" id="name-search" name="name-search" placeholder="">
+                <script type="text/javascript">
+                    var sessionIdSoc = sessionStorage.getItem('idSociete');
+
+                    fetch('https://face.activactions.net/api/Employes/Get/' + sessionIdSoc)
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            let donneesEmployes = '';
+
+                            for (let item of data) {
+                                donneesEmployes += `<option id="" attr.data-value="${item.EmployeID}">${item.Nom} - ${item.Prenom} - ${item.Telephone} </option>`
+                            }
+                            document.getElementById('name-search').innerHTML = donneesEmployes;
+                        });
+
+                </script>
+
+            </select>
+            <label for="start-search">Du</label>
+            <input type="date" class="form-control" placeholder="Date de debut" id="start-search">
+            <label for="end-search">Au</label>
+            <input type="date" class="form-control" placeholder="Date de fin" id="end-search">
+            <input type="button" class="form-control" onclick="appelPagePointageSearch('searchAll','Recherche')"
+                value="Rechercher" style="background-color: #8dc63f; color: white;">
+        </form>
+
 
     </div>
     <div class="row m-3">
@@ -107,27 +136,8 @@
 
     </div>
 
-
     <div class="" id="show"></div>
 
-    <table id="myTable" class="display">
-        <thead>
-            <tr>
-                <th>Column 1</th>
-                <th>Column 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Row 1 Data 1</td>
-                <td>Row 1 Data 2</td>
-            </tr>
-            <tr>
-                <td>Row 2 Data 1</td>
-                <td>Row 2 Data 2</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 
 
@@ -211,6 +221,31 @@
             $("#vu").html("Vue du jour");
         });
     });
+
+
+    
+
+
+
+    function appelPagePointageSearch(lien, periode) {
+
+        //alert("test");
+        var lienComplet = 'pages/' + lien + '.html';
+        $.ajax({
+
+            url: lienComplet,
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#show').html(data);
+            },
+            error: function () {
+                $('#show').html('Erreur lors du chargement des données.');
+            }
+        });
+        $("#vu").html(periode);
+        // });
+    }
 
 
 
