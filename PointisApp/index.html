@@ -35,7 +35,7 @@
         #deconnexion {
             position: absolute;
             bottom: 20px;
-        
+
         }
 
         #formSearch input {
@@ -46,7 +46,7 @@
         }
 
         #formSearch {
-          
+
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -283,21 +283,21 @@
         function appel(lien) {
 
             //$('#pageBoardUtil').click(function () {
-                //alert("test");
-                var lienComplet = 'pages/utilisateur/'+lien+'.html';
-                $.ajax({
-                    
-                    url: lienComplet,
-                    method: 'GET',
-                    dataType: 'html',
-                    success: function (data) {
-                        $('#content-main').html(data);
-                    },
-                    error: function () {
-                        $('#content-main').html('Erreur lors du chargement des données.');
-                    }
-                });
-           // });
+            //alert("test");
+            var lienComplet = 'pages/utilisateur/' + lien + '.html';
+            $.ajax({
+
+                url: lienComplet,
+                method: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#content-main').html(data);
+                },
+                error: function () {
+                    $('#content-main').html('Erreur lors du chargement des données.');
+                }
+            });
+            // });
         }
 
     </script>
@@ -324,46 +324,33 @@
 
 
 
-        var entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId,
-            sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId,
-            absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId,
+        var entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId;
+            sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId;
+            absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId;
 
-            RetardDay = 'https://face.activactions.net/api/Pointage/Late/' + sessionId,
-            RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
-            retardWeek = 'https://face.activactions.net/api/Pointage/LateWeek/' + sessionId,
-            retardMonth = 'https://face.activactions.net/api/Pointage/LateMounth/' + sessionId,
 
             RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
             retardSemaine = 'https://face.activactions.net/api/Pointage/retardSemaine/' + sessionEmpId,
             retardMois = 'https://face.activactions.net/api/Pointage/retardMois/' + sessionEmpId,
 
             utilisateurs = 'https://face.activactions.net/api/Connexion/Get/' + sessionId,
-            employes = 'https://face.activactions.net/api/Employes/GetRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom,
-            //employes = 'https://face.activactions.net/api/Employes/Get/' + sessionId;
+            employes = 'https://face.activactions.net/api/Employes/GetRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+
+            retardEquipeJour = 'https://face.activactions.net/api/Pointage/GetRetardJourRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+            retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+            retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+
+            PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+
 
             employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
 
-            url20Jour = 'https://face.activactions.net/api/Pointage/PointageJour/' + sessionId,
-            pointageDay = "https://face.activactions.net/api/Pointage/DayTwenty/" + sessionId,
-            pointageWeek = "https://face.activactions.net/api/Pointage/Week/" + sessionId,
-            pointageMonth = "https://face.activactions.net/api/Pointage/Mounth/" + sessionId,
-
-            sortiesDay = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId,
-            sortiesWeek = 'https://face.activactions.net/api/Pointage/SortieSemaine/' + sessionId,
-            sortiesMonth = 'https://face.activactions.net/api/Pointage/SortieMois/' + sessionId,
-
-            entreeDay = 'https://face.activactions.net/api/Pointage/Entree/Day/' + sessionId,
-            entreeWeek = 'https://face.activactions.net/api/Pointage/Entree/week/' + sessionId,
-            entreeMonth = 'https://face.activactions.net/api/Pointage/Entree/Mounth/' + sessionId,
-
-            absenceDay = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId,
-            absenceWeek = 'https://face.activactions.net/api/Pointage/AbsenceSemaine/' + sessionId,
-            absenceMonth = 'https://face.activactions.net/api/Pointage/AbsenceMois/' + sessionId,
-
-            urlJour = 'https://face.activactions.net/api/Pointage/Jour/' + sessionEmpId;
-
-        //urlEquipe = 'https://face.activactions.net/api/Pointage/PointageJour/' + sessionEmpId;
-
+            PointageJour = 'https://face.activactions.net/api/Pointage/Jour/' + sessionEmpId,
+            pointageSem = "https://face.activactions.net/api/Pointage/Semaine/" + sessionEmpId,
+            pointageMois = "https://face.activactions.net/api/Pointage/Mois/" + sessionEmpId,
 
 
         // Retard ?
@@ -587,16 +574,12 @@
                         </thead>
                         <tbody id="corps">
                             <script type="text/javascript">
-                                let infos = '';
-                                //var data = {}
-
-                                // fetch('https://face.activactions.net/api/Pointage/Week/3367', {
-                                fetch(urlJour)
+                                fetch(PointageJour)
                                     .then(res => res.json())
                                     .then(data => {
+                                        let infos = '';
                                         console.log(data);
                                         for (let item of data) {
-                                            // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
                                             infos += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EquipeHeureDebut} ${item.EquipeHeureFin}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
                                         }
                                         document.getElementById('corps').innerHTML = infos;

@@ -5,12 +5,10 @@
             <div class="d-flex flex-column">
                 <span id="retard">
                     <script>
-                        var retardInner = '';
-                        var data = {}
-                        fetch(RetardJour)
+                        fetch(retardEquipeJour)
                             .then(res => res.json())
                             .then(data => {
-                                retardInner = data;
+                                var retardInner = data;
 
                                 if (retardInner > 0) {
                                     document.getElementById('retard').innerHTML = retardInner;
@@ -23,13 +21,13 @@
                 <span>Retard</span>
             </div>
         </div><br /><br />
+
+        <!--
         <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3" style="background-color: whitesmoke;">
             <img src="images/import/absence.png" alt="" width="50px">
             <div class="d-flex flex-column">
                 <span id="absence">
                     <script>
-                        var absenceInner = '';
-                        var data = {}
                         fetch(absenceDay)
                             .then(res => res.json())
                             .then(data => {
@@ -49,6 +47,7 @@
 
             </div>
         </div><br /><br />
+    -->
 
         <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3" style="background-color: whitesmoke;">
             <img src="images/import/attendance.png" alt="" width="50px">
@@ -56,21 +55,19 @@
                 <span>
                     <span id="presence">
                         <script>
-                            var absenceInner = '';
-                            var data = {}
                             fetch(entree)
                                 // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
                                 .then(res => res.json())
                                 .then(data => {
-                                    absenceInner = data;
-                                    absenceInf = '0' + absenceInner;
+                                    var presence = data;
+                                    var presenceInf = '0' + presence;
 
-                                    if (absenceInner > 0) {
-                                        if (absenceInner < 10) {
-                                            document.getElementById('presence').innerHTML = absenceInf;
+                                    if (presence > 0) {
+                                        if (presence < 10) {
+                                            document.getElementById('presence').innerHTML = presenceInf;
                                         }
                                         else {
-                                            document.getElementById('presence').innerHTML = absenceInner;
+                                            document.getElementById('presence').innerHTML = presence;
                                         }
                                     } else {
                                         document.getElementById('presence').innerHTML = '00';

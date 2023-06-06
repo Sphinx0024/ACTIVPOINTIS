@@ -5,13 +5,11 @@
         <div class="d-flex flex-column">
             <span id="retard">
                 <script>
-                    var retardInner = '';
-                    var data = {}
-                    fetch(RetardDay)
+                    fetch(retardMoisEmp)
                         // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
                         .then(res => res.json())
                         .then(data => {
-                            retardInner = data;
+                            var retardInner = data;
 
                             if (retardInner > 0) {
                                 document.getElementById('retard').innerHTML = convertion(retardInner);
@@ -25,6 +23,8 @@
             <span>Retard</span>
         </div>
     </div>
+
+    <!--
     <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
         style="background-color: whitesmoke;">
         <img src="images/import/absence.png" alt="" width="50px">
@@ -57,21 +57,21 @@
             <span>Absence</span>
         </div>
     </div>
+-->
+
     <div class="col-12 col-lg-3 d-flex flex-row p-2 border border-1 border-dark rounded-3"
         style="background-color: whitesmoke;">
         <img src="images/import/attendance.png" alt="" width="50px">
         <div class="d-flex flex-column">
                 <span id="presence">
                     <script>
-                        var presence = '';
-                        var data = {}
-                        fetch(entree)
+                        fetch(entreeMoisEmp)
                             .then(res => res.json())
                             .then(data => {
-                                presence = data;
-                                presenceAff = '0' + presence;
+                                var presence = data;
+                                var presenceAff = '0' + presence;
 
-                                if (absenceInner > 0) {
+                                if (presence > 0) {
                                     if (presence < 10) {
                                         document.getElementById('presence').innerHTML = presenceAff;
                                     }
@@ -104,12 +104,12 @@
             <tbody id="corpsPoint">
 
                 <script type="text/javascript">
-                    let infosPointJour = '';
-                    console.log(urlJour);
-                    fetch(urlJour)
+                    console.log(pointageMois);
+                    fetch(pointageMois)
                         .then(res => res.json())
                         .then(data => {
                             console.log(data);
+                            let infosPointJour = '';
                             for (let item of data) {
                                 // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
                                 infosPointJour += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;

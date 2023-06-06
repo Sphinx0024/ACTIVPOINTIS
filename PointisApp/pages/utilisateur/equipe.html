@@ -130,7 +130,8 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header text-center" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" id="vue">
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne"
+                            id="vue">
                             Vue du Jour
                         </button>
                     </h2>
@@ -152,6 +153,27 @@
 </div>
 
 <script>
+
+    function formatComplet(arg) {
+        let format = new Date(arg),
+            ret;
+        ret = format.toLocaleDateString('fr-fr', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+        return ret
+    }
+
+    function formatHeure(arg) {
+        if (arg === undefined) {
+            let infos = "Pas encore pointé";
+            return infos;
+        }
+        else {
+            let format = new Date(arg),
+                ret;
+            ret = format.getHours() + "h:" + format.getMinutes() + "mn:" + format.getSeconds() + "s";
+            return ret
+        }
+    }
+
     function appelPagePointage(lien, periode) {
 
         //alert("test");
@@ -184,13 +206,10 @@
                 <div class="d-flex flex-column">
                     <span id="retard">
                         <script>
-                            var retardInner = '';
-                            var data = {}
-                            fetch(retardRespoJour)
-                                // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
+                            fetch(retardEquipeJour)
                                 .then(res => res.json())
                                 .then(data => {
-                                    retardInner = data;
+                                    var retardInner = data;
 
                                     if (retardInner > 0) {
                                         document.getElementById('retard').innerHTML = retardInner;
@@ -203,6 +222,8 @@
                     <span>Retard</span>
                 </div>
             </div><br /><br />
+
+            <!--
             <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3"
                 style="background-color: whitesmoke;">
                 <img src="images/import/absence.png" alt="" width="50px">
@@ -231,6 +252,7 @@
 
                 </div>
             </div><br /><br />
+            -->
 
             <div class="d-flex flex-row p-2 border border-1 border-dark rounded-3"
                 style="background-color: whitesmoke;">
@@ -239,21 +261,18 @@
                     <span>
                         <span id="presence">
                             <script>
-                                var absenceInner = '';
-                                var data = {}
                                 fetch(entree)
-                                    // fetch('https://face.activactions.net/api/Pointage/SortieSemaine') // Pour la semaine
                                     .then(res => res.json())
                                     .then(data => {
-                                        absenceInner = data;
-                                        absenceInf = '0' + absenceInner;
+                                        var presence = data;
+                                        var presenceInf = '0' + presence;
 
-                                        if (absenceInner > 0) {
-                                            if (absenceInner < 10) {
-                                                document.getElementById('presence').innerHTML = absenceInf;
+                                        if (presence > 0) {
+                                            if (presence < 10) {
+                                                document.getElementById('presence').innerHTML = presenceInf;
                                             }
                                             else {
-                                                document.getElementById('presence').innerHTML = absenceInner;
+                                                document.getElementById('presence').innerHTML = presence;
                                             }
                                         } else {
                                             document.getElementById('presence').innerHTML = '00';
@@ -289,13 +308,13 @@
                 <tbody id="corpequipeall">
                     <script>
 
-                        fetch(urlJour)
+                        fetch(PointageEquipe)
                             .then(res => res.json())
                             .then(data => {
                                 let infosEquipe = '';
                                 console.log(data);
                                 for (let item of data) {
-                                    infosEmp += `<tr><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Telephone}</td></tr>`;
+                                    infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
 
                                 }
                                 document.getElementById('corpequipeall').innerHTML = infosEquipe;
