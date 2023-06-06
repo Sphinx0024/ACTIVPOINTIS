@@ -212,3 +212,13 @@ body {
 .newClass{
   visibility: visible;
 }
+
+.li-active {
+  background: #DC6502;
+  color: #FFFFFF;
+}
+
+
+.li12, .li23 {
+  background: #DDE3EC;
+}
