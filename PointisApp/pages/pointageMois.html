@@ -15,12 +15,11 @@
 
                 <script type="text/javascript">
 
-                    let infosMois = '';
                     var dataMois = {};
 
                     var sessionId = sessionStorage.getItem('idSociete');
 
-                    fetch("https://face.activactions.net/api/Pointage/Mounth/" + sessionId, {
+                    fetch("https://face.activactions.net/api/Pointage/Month/" + sessionId, {
                         method: 'GET',
                         headers: {
                             'content-type': 'application/json'
@@ -29,6 +28,8 @@
                     })
                         .then(res => res.json())
                         .then(data => {
+                            let infosMois = '';
+
                             for (let item of data) {
                                 // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
                                 infosMois += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTitre}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
