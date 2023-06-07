@@ -37,7 +37,8 @@
             bottom: 20px;
 
         }
-/* 
+
+        /* 
         #formSearch input {
             border: 1px solid rgba(0, 0, 0, 0.2);
             background-color: whitesmoke;
@@ -325,42 +326,42 @@
 
 
         var entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId;
-            sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId;
-            absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId;
+        sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId;
+        absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId;
 
 
-            RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
+        RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
             retardSemaine = 'https://face.activactions.net/api/Pointage/retardSemaine/' + sessionEmpId,
             retardMois = 'https://face.activactions.net/api/Pointage/retardMois/' + sessionEmpId,
 
             utilisateurs = 'https://face.activactions.net/api/Connexion/Get/' + sessionId,
             employes = 'https://face.activactions.net/api/Employes/GetRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
-            retardEquipeJour = 'https://face.activactions.net/api/Pointage/GetRetardJourRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeJour = 'https://face.activactions.net/api/Pointage/GetRetardJourRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
-            PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
 
-            employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
+        employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
 
             PointageJour = 'https://face.activactions.net/api/Pointage/Jour/' + sessionEmpId,
             pointageSem = "https://face.activactions.net/api/Pointage/Semaine/" + sessionEmpId,
             pointageMois = "https://face.activactions.net/api/Pointage/Mois/" + sessionEmpId,
 
 
-        // Retard ?
+            // Retard ?
 
-        function formatComplet(arg) {
-            let format = new Date(arg),
-                ret;
-            ret = format.toLocaleDateString('fr-fr', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
-            return ret
-        }
+            function formatComplet(arg) {
+                let format = new Date(arg),
+                    ret;
+                ret = format.toLocaleDateString('fr-fr', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+                return ret
+            }
 
         function formatHeure(arg) {
             if (arg === undefined) {
@@ -456,6 +457,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
+                                        <!--
                                         <li>
                                             <a href="#"><i class="icon-user"></i>
                                                 <span>Profile</span></a>
@@ -468,7 +470,10 @@
                                         </li>
 
                                         <hr class="my-2">
-                                        <li><a href="deconnect.html"><i class="icon-key"></i> <span>Logout</span></a>
+                                       -->
+
+                                        <li><a href="deconnect.html"><i class="icon-key"></i>
+                                                <span>Deconnexion</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -532,7 +537,10 @@
                         <div id="carouselExampleControls" class="carousel slide p-5 text-center " data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active d-flex flex-row justify-content-around">
-                                    <img class="d-block w-25" src="images/import/Code-QR.png" alt="First slide">
+                                    <!-- <img class="d-block w-25" src="images/import/Code-QR.png" alt="First slide"> -->
+                                    <img src="" alt="" width="100" class="img-fluid img-thumbnail shadow-sm bg-success"
+                                        id="qrCodeImg" alt="votre qrCode">
+
                                     <p>Mon espace de suivie<br /> Utilisateur <br /> POINTIS !!</p>
                                 </div>
 
@@ -647,6 +655,9 @@
         nomSoc.innerHTML = sessionStorage.getItem("nameSoc");
 
     </script>
+
+
+    <script src="js/qrCode.js"></script>
 
 
 

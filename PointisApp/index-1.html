@@ -282,6 +282,7 @@
                             <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
+                                        <!--
                                         <li>
                                             <a href="#"><i class="icon-user"></i>
                                                 <span>Profile</span></a>
@@ -294,14 +295,10 @@
                                         </li>
 
                                         <hr class="my-2">
-                                        <!--                                         
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                                    Screen</span></a>
-                                        </li>
-                                         -->
-                                        <li id="deconnexion"><a href="deconnect.html"><i class="icon-key"></i>
-                                                <span>Logout</span></a>
+                                       -->
+
+                                        <li><a href="deconnect.html"><i class="icon-key"></i>
+                                                <span>Deconnexion</span></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -388,9 +385,16 @@
                     <div class="col-12" style="background-color: rgba(245, 245, 245, 0.384);">
                         <div id="carouselExampleControls" class="carousel slide p-5 text-center " data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item active d-flex flex-row justify-content-around">
-                                    <img class="d-block w-25" src="images/import/Code-QR.png" alt="First slide">
-                                    <p>Mon espace de suivie<br /> d'administration <br /> POINTIS !!</p>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active d-flex flex-row justify-content-around">
+                                        <!-- <img class="d-block w-25" src="images/import/Code-QR.png" alt="First slide"> -->
+                                        <img src="" alt="" width="100"
+                                            class="img-fluid img-thumbnail shadow-sm bg-success" id="qrCodeImg"
+                                            alt="votre qrCode">
+
+                                        <p>Mon espace de suivie<br /> Utilisateur <br /> POINTIS !!</p>
+                                    </div>
+
                                 </div>
                                 <!--
                                 <div class="carousel-item">
@@ -565,6 +569,9 @@
         nomSoc.innerHTML = sessionStorage.getItem("nameSoc");
 
     </script>
+    <script src="js/qrCode.js"></script>
+
+
 
 
 
