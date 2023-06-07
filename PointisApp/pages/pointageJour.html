@@ -14,14 +14,10 @@
 
                 <script type="text/javascript">
 
+                    var sessionIdSoc = sessionStorage.getItem('idSociete');
+                    var lienDay = 'https://face.activactions.net/api/Pointage/Day/' + sessionIdSoc
 
-
-                    let infos = '';
-                    var data = {}
-
-                    var sessionId = sessionStorage.getItem('idSociete');
-
-                    fetch("https://face.activactions.net/api/Pointage/Day/" + sessionId, {
+                    fetch(lienDay, {
                         method: 'GET',
                         headers: {
                             'content-type': 'application/json'
@@ -30,8 +26,10 @@
                     })
                         .then(res => res.json())
                         .then(data => {
+                            // console.log(lienDay);
+                            let infos = '';
+
                             for (let item of data) {
-                                // infos += `<tr><td>${item.PointageJour}</td><td>${item.PointageHeureEntree}</td><td>${item.PointageHeureSortie} </td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td></tr>`;
                                 infos += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom} ${item.EmployePrenom}</td><td>${item.EmployeTitre}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
                             }
                             document.getElementById('corps').innerHTML = infos;

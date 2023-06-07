@@ -21,7 +21,7 @@
                     .then(res => res.json())
                     .then(data => {
                         for (let item of data) {
-                            document.getElementById("equipe").value = item.HeureDebutService +"-"+ item.HeureFinService;
+                            document.getElementById("equipe").value = item.HeureDebutService + "-" + item.HeureFinService;
 
                         }
                     });
@@ -50,10 +50,11 @@
 
         <select class="form-control" id="equipe" name="equipe" placeholder="">
             <script type="text/javascript">
-                let donnees = '';
                 fetch('https://face.activactions.net/api/EquipeTravail/Get/' + socID)
                     .then(res => res.json())
                     .then(data => {
+                        let donnees = '';
+
                         for (let item of data) {
                             donnees += `<option id="horaire" attr.data-value=${item.ID}>${item.HeureDebutService}-${item.HeureFinService}</option>`
                         }

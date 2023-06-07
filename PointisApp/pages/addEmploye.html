@@ -1,5 +1,3 @@
-
-
 <form action="" method="" class="col-12 d-flex flex-row justify-content-between flex-wrap bg-light m-2 p-2">
     <div class="input-block d-flex flex-column">
         <input type="text" class="bg-light border-0 border-bottom" id="Nom" name="Nom" placeholder="Nom">
@@ -20,10 +18,11 @@
 
         <select class="form-control" id="equipe" name="equipe" placeholder="">
             <script type="text/javascript">
-                let donnees = '';
                 fetch('https://face.activactions.net/api/EquipeTravail/Get/' + socID)
                     .then(res => res.json())
                     .then(data => {
+                        let donnees = '';
+
                         for (let item of data) {
                             donnees += `<option id="horaire" attr.data-value=${item.ID}>${item.HeureDebutService}-${item.HeureFinService}</option>`
                         }
