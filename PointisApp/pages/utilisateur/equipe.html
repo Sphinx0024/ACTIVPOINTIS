@@ -194,6 +194,25 @@
         // });
     }
 
+    function voir(id){
+        sessionStorage.setItem("idEquipeUser", id);
+        fetch('https://face.activactions.net/api/Employes/GetUn/'+id)
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            for(let item of data){
+                var nom = item.Nom;
+                var prenom = item.Prenom;
+                console.log(nom);
+                console.log(prenom);
+                sessionStorage.setItem("nomEmpEquip", nom);
+                sessionStorage.setItem("prenomEmpEquip", prenom);
+            }
+            location.replace('index.html')
+        });
+        
+    }
+
 </script>
 </script>
 
@@ -303,6 +322,7 @@
                         <th scope="col">TELEPHONE</th>
                         <th scope="col">ENTREES</th>
                         <th scope="col">SORTIES</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody id="corpequipeall">
@@ -314,7 +334,7 @@
                                 let infosEquipe = '';
                                 console.log(data);
                                 for (let item of data) {
-                                    infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
+                                    infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td><td onclick="voir('${item.EmployeID}')"><button class ="btn btn-light">Détail</button></td></tr>`;
 
                                 }
                                 document.getElementById('corpequipeall').innerHTML = infosEquipe;

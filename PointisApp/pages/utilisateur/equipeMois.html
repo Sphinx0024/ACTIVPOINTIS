@@ -101,19 +101,19 @@
                     <th scope="col">SORTIES</th>
                 </tr>
             </thead>
-            <tbody id="corpequipeall">
+            <tbody id="corpequipeMois">
                 <script>
                     
-                    fetch(urlJour)
+                    fetch(PointageEquipeMois)
                         .then(res => res.json())
                         .then(data => {
                             let infosEquipe = '';
-                            console.log(data);
+                            console.log(data.lengh);
                             for (let item of data) {
-                                infosEmp += `<tr><td>${item.Nom}</td><td>${item.Prenom}</td><td>${item.Telephone}</td></tr>`;
-
+                                infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td></tr>`;
+                               
                             }
-                            document.getElementById('corpequipeall').innerHTML = infosEquipe;
+                            document.getElementById('corpequipeMois').innerHTML = infosEquipe;
                         });
                 </script>
 
