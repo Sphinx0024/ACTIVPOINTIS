@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab - Bootstrap Admin Dashboard Template by Themefisher.com</title>
+    <title>Pointis</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
@@ -56,6 +56,12 @@
 
 
     <script>
+
+        function retour() {
+            sessionStorage.removeItem("idEquipeUser");
+            location.replace('index.html');
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
 
             if (sessionStorage.getItem('idSociete') === null) {
@@ -74,12 +80,50 @@
                 var equipePage = document.getElementById("pageEquipeUtil");
 
 
-                if (sessionStorage.getItem('idEmployeUser') === null) {
-                    sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeNOUser'));
-                    //admin.style.display = "none";
+                if (sessionStorage.getItem('idEquipeUser') != null) {
+                    sessionStorage.setItem("idemploy", sessionStorage.getItem('idEquipeUser'));
                     equipeDiv.style.display = "none";
-                    //equipePage.style.display = "none";
                     menu.innerHTML = `
+                                    <li>
+                                        <a class="" onclick="retour()" aria-expanded="false" style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <!--<i class="fa fa-cog text-light" aria-hidden="true"></i>-->
+                                            <span class="nav-text">Mon Espace Personnel</span>
+                                        </a>
+                                    </li><br />
+                                    <li>
+                                        <a class="" onclick="appel('board')" aria-expanded="false"
+                                            style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-th-large text-light" aria-hidden="true"></i>
+                                            <span class="nav-text">Tableau de bord</span>
+                                        </a>
+                                    </li><br />
+                                    <li id="pointage">
+                                        <a  class="" onclick="appel('pointage')" aria-expanded="false" style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-map text-light " aria-hidden="true"></i>
+                                            <span class="nav-text">Pointage</span>
+                                        </a>
+                                    </li><br />
+                                    <li id="deconnexion">
+                                        <a class="" href="deconnect.html" aria-expanded="false" style="color: white;">
+                                            <!-- <i class="icon-notebook menu-icon"></i> -->
+                                            <i class="fa fa-sign-out text-light" aria-hidden="true"></i>
+                                            <span class="nav-text">Deconnexion</span>
+                                        </a>
+                                    </li>
+                                    `;
+                }
+
+                else {
+
+                    if (sessionStorage.getItem('idEmployeUser') === null) {
+                        sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeNOUser'));
+                        //admin.style.display = "none";
+                        equipeDiv.style.display = "none";
+                        //equipePage.style.display = "none";
+                        menu.innerHTML = `
                                     <li>
                                         <a class="" onclick="appel('board')" aria-expanded="false"
                                             style="color: white;">
@@ -112,18 +156,18 @@
                                     </li>
                                     `;
 
-                    fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
-                        .then(res => res.json())
-                        .then(data => {
-                            //console.log(data);
-                            for (let item of data) {
-                                let resp = item.Responsable;
-                                let mail = item.Email;
-                                //console.log(res);
-                                if (nomPrenom == resp) {
-                                    equipeDiv.style.display = "flex";
-                                    //equipePage.style.display = "flex";
-                                    menu.innerHTML = `
+                        fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
+                            .then(res => res.json())
+                            .then(data => {
+                                //console.log(data);
+                                for (let item of data) {
+                                    let resp = item.Responsable;
+                                    let mail = item.Email;
+                                    //console.log(res);
+                                    if (nomPrenom == resp) {
+                                        equipeDiv.style.display = "flex";
+                                        //equipePage.style.display = "flex";
+                                        menu.innerHTML = `
                                                     <li>
                                                         <a class="" onclick="appel('board')" aria-expanded="false"
                                                             style="color: white;">
@@ -163,17 +207,17 @@
                                                         </a>
                                                     </li>
                                                                     `;
+                                    }
                                 }
-                            }
-                        });
-                }
+                            });
+                    }
 
-                else {
-                    sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeUser'));
-                    //admin.style.display = "flex";
-                    equipeDiv.style.display = "none";
-                    //equipePage.style.display = "none";
-                    menu.innerHTML = `
+                    else {
+                        sessionStorage.setItem("idemploy", sessionStorage.getItem('idEmployeUser'));
+                        //admin.style.display = "flex";
+                        equipeDiv.style.display = "none";
+                        //equipePage.style.display = "none";
+                        menu.innerHTML = `
                                                     <li>
                                                         <a class="" onclick="appel('board')" aria-expanded="false"
                                                             style="color: white;">
@@ -214,17 +258,17 @@
                                                                     `;
 
 
-                    fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
-                        .then(res => res.json())
-                        .then(data => {
-                            //console.log(data);
-                            for (let item of data) {
-                                let resp = item.Responsable;
-                                console.log(resp);
-                                if (nomPrenom == resp) {
-                                    equipeDiv.style.display = "flex";
-                                    //equipePage.style.display = "flex";
-                                    menu.innerHTML = `
+                        fetch('https://face.activactions.net/api/Employes/Get/' + idSoc)
+                            .then(res => res.json())
+                            .then(data => {
+                                //console.log(data);
+                                for (let item of data) {
+                                    let resp = item.Responsable;
+                                    console.log(resp);
+                                    if (nomPrenom == resp) {
+                                        equipeDiv.style.display = "flex";
+                                        //equipePage.style.display = "flex";
+                                        menu.innerHTML = `
                                                     <li>
                                                         <a class="" onclick="appel('board')" aria-expanded="false"
                                                             style="color: white;">
@@ -270,10 +314,12 @@
                                                         </a>
                                                     </li>
                                                                     `;
+                                    }
                                 }
-                            }
-                        });
+                            });
+                    }
                 }
+
 
             }
 
@@ -305,11 +351,28 @@
 
     <script>
         function employeID() {
-            var id = sessionStorage.getItem('idEmployeUser');
-            if (sessionStorage.getItem('idEmployeUser') === null) {
-                id = sessionStorage.getItem('idEmployeNOUser');
+            var id = sessionStorage.getItem('idEquipeUser');
+            //var id = sessionStorage.getItem('idEmployeUser');
+            if (sessionStorage.getItem('idEquipeUser') === null) {
+                id = sessionStorage.getItem('idEmployeUser');
+
+                if (sessionStorage.getItem('idEmployeUser') === null) {
+                    id = sessionStorage.getItem('idEmployeNOUser');
+                }
             }
             return id;
+        }
+
+        function employeInfos() {
+            var nomPrenoms = sessionStorage.getItem('nomEmpEquip') + " "+ sessionStorage.getItem('prenomEmpEquip');
+            if (sessionStorage.getItem('idEquipeUser') === null) {
+                nomPrenoms = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
+
+                if (sessionStorage.getItem('idEmployeUser') === null) {
+                    nomPrenoms = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
+                }
+            }
+            return nomPrenoms;
         }
         // Ou est stocke Id sessionStorage de societé chez employé
         // let sessionId = sessionStorage.getItem("emp"),
@@ -325,42 +388,42 @@
 
 
         var entree = 'https://face.activactions.net/api/Pointage/Day/' + sessionId;
-            sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId;
-            absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId;
+        sorties = 'https://face.activactions.net/api/Pointage/Sortie/' + sessionId;
+        absence = 'https://face.activactions.net/api/Pointage/AbsenceJour/' + sessionId;
 
 
-            RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
+        RetardJour = 'https://face.activactions.net/api/Pointage/RetardJour/' + sessionEmpId,
             retardSemaine = 'https://face.activactions.net/api/Pointage/retardSemaine/' + sessionEmpId,
             retardMois = 'https://face.activactions.net/api/Pointage/retardMois/' + sessionEmpId,
 
             utilisateurs = 'https://face.activactions.net/api/Connexion/Get/' + sessionId,
             employes = 'https://face.activactions.net/api/Employes/GetRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
-            retardEquipeJour = 'https://face.activactions.net/api/Pointage/GetRetardJourRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeJour = 'https://face.activactions.net/api/Pointage/GetRetardJourRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
-            PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipeJour = 'https://face.activactions.net/api/Pointage/GetRespoPointJour?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipeSem = 'https://face.activactions.net/api/Pointage/GetRespoPointSem?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipeMois = 'https://face.activactions.net/api/Pointage/GetRespoPointMois?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
 
-            employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
+        employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
 
             PointageJour = 'https://face.activactions.net/api/Pointage/Jour/' + sessionEmpId,
             pointageSem = "https://face.activactions.net/api/Pointage/Semaine/" + sessionEmpId,
             pointageMois = "https://face.activactions.net/api/Pointage/Mois/" + sessionEmpId,
 
 
-        // Retard ?
+            // Retard ?
 
-        function formatComplet(arg) {
-            let format = new Date(arg),
-                ret;
-            ret = format.toLocaleDateString('fr-fr', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
-            return ret
-        }
+            function formatComplet(arg) {
+                let format = new Date(arg),
+                    ret;
+                ret = format.toLocaleDateString('fr-fr', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+                return ret
+            }
 
         function formatHeure(arg) {
             if (arg === undefined) {
@@ -445,7 +508,7 @@
                     <ul class="clearfix">
                         <li class="icons">
                             <span id="nameConnect"></span>&nbsp;
-                            (<em id="societeAd">ACTIV</em>)
+                            (<em id="societeAd"></em>)
                         </li>
 
                         <li class="icons dropdown">
@@ -643,7 +706,7 @@
         var nomC = document.getElementById('nameConnect');
         var nomSoc = document.getElementById('societeAd');
 
-        nomC.innerHTML = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
+        nomC.innerHTML = employeInfos();
         nomSoc.innerHTML = sessionStorage.getItem("nameSoc");
 
     </script>
