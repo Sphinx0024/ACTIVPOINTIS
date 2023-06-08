@@ -22,7 +22,8 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" style="background-image: url(images/NUAGE.png);background-size: cover;background-repeat: no-repeat;">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300"
+  style="background-image: url(images/NUAGE.png);background-size: cover;background-repeat: no-repeat;">
   <div id="overlayer"></div>
   <div class="loader">
     <div class="spinner-border text-primary" role="status">
@@ -58,15 +59,17 @@
 
   </header>
 
-  <section class="" >
+  <section class="">
     <div class="">
-      <p id="zone-alert" class="text-center fw-bolder" style="position: fixed; top: 50%; left: 40%; font-size: larger;font-weight: bolder; color:black;">Votre Email a été verifié avec succès!!</p>
-      
+      <p id="zone-alert" class="text-center fw-bolder"
+        style="position: fixed; top: 50%; left: 40%; font-size: larger;font-weight: bolder; color:black;">Votre Email a
+        été verifié avec succès!!</p>
+
     </div>
 
 
-      <!-- Favicon icon -->
-      <script>
+    <!-- Favicon icon -->
+    <script>
       function GetQueryString(param) {
         var vars = {};
         document.location.href.toLowerCase().replace(location.hash, '').replace(
@@ -92,7 +95,8 @@
           console.log(data)
           if (data == true) {
             document.getElementById('zone-alert').style.color = 'green';
-            location.replace('savePassword.html');
+            location.replace('./savePassword.html');
+            // location.replace('./loginPointis.html');
           } else {
             document.getElementById('zone-alert').style.color = 'red';
             document.getElementById('zone-alert').innerHTML = "Email non disponible !! Echec d'authentification.";

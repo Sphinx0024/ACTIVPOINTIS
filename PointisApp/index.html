@@ -7,7 +7,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Pointis</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png"> -->
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
     <!-- Pignose Calender -->
     <link href="./plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
     <!-- Chartist -->
@@ -38,21 +49,9 @@
 
         }
 
-        /* 
-        #formSearch input {
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            background-color: whitesmoke;
-            margin-right: 5px;
-            margin-left: 5px;
-        }
-
-        #formSearch {
-
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        } */
+       .activePage {
+        color: #3ab44c;
+       }
     </style>
 
 
@@ -365,7 +364,7 @@
         }
 
         function employeInfos() {
-            var nomPrenoms = sessionStorage.getItem('nomEmpEquip') + " "+ sessionStorage.getItem('prenomEmpEquip');
+            var nomPrenoms = sessionStorage.getItem('nomEmpEquip') + " " + sessionStorage.getItem('prenomEmpEquip');
             if (sessionStorage.getItem('idEquipeUser') === null) {
                 nomPrenoms = sessionStorage.getItem("nameAd") + ' ' + sessionStorage.getItem("prenomAd");
 
@@ -404,10 +403,10 @@
         retardEquipeSem = 'https://face.activactions.net/api/Pointage/GetRetardSemRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
         retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
-            PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
-            // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        PointageEquipe = 'https://face.activactions.net/api/Pointage/GetRespoPoint?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
+        // retardEquipeMois = 'https://face.activactions.net/api/Pointage/GetRetardMoisRespo?id=' + sessionId + '&nom=' + nom + '&prenom=' + prenom;
 
 
         employesById = 'https://face.activactions.net/api/Employes/Get/' + sessionEmpId,
@@ -648,6 +647,7 @@
                                 fetch(PointageJour)
                                     .then(res => res.json())
                                     .then(data => {
+                                        console.log(data);
                                         let infos = '';
                                         console.log(data);
                                         for (let item of data) {

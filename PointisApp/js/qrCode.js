@@ -1,11 +1,15 @@
 function employeID() {
-    var id = sessionStorage.getItem('idEmployeUser');
-    if (sessionStorage.getItem('idEmployeUser') === null) {
-        id = sessionStorage.getItem('idEmployeNOUser');
+    var id = sessionStorage.getItem('idEquipeUser');
+    //var id = sessionStorage.getItem('idEmployeUser');
+    if (sessionStorage.getItem('idEquipeUser') === null) {
+        id = sessionStorage.getItem('idEmployeUser');
+
+        if (sessionStorage.getItem('idEmployeUser') === null) {
+            id = sessionStorage.getItem('idEmployeNOUser');
+        }
     }
     return id;
 }
-
 
 
 //import code

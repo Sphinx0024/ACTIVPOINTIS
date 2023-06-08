@@ -8,7 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>POINTIS</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="#">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="#"> -->
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="css/style.css">
 
 
@@ -338,57 +348,10 @@
             }
     }
 
-
-
-    /*  function connexion() {
-  
-  
-          fetch('https://face.activactions.net/api/Connexion/Get')
-                  .then(res => res.json())
-                  .then(data => {
-                      var t = document.getElementById("log").value;
-                      var d = document.getElementById("pass").value;
-                  for(let item of data){
-                          var log = item.Login;
-                          var Password = item.Password;
-                          var r= item.Role;
-                      if(t == log && d == Password){
-                      
-                           var idsociete = item.SocieteID;
-                          console.log(idsociete);
-                           sessionStorage.setItem("u",idsociete);
-                           if((r=="admin") || (r=="Admin")){
-                               console.log("ok");
-                              location.replace('./index2.html');
-                          }
-                           elseif((r=="utilisateur")||(r=="Utilisateur"))
-                          {
-                                  console.log("ok");
-                                  location.replace('./index2.html');
-                          }  
-                       
-                      }
-                      else{
-                          fetch('https://face.activactions.net/api/Employes/Get')
-                          .then(res => res.json())
-                          .then(data => {
-                              for(let item of data){
-                                   var employe=item.EmployeID;
-                                   var tel=item.Telephone;
-                                   console.log(t);
-                                   sessionStorage.setItem("j",employe);
-                                   sessionStorage.setItem("y",tel)
-                               }
-                          })
-  
-                      }
-                  }
-                  });
-                  
-  }*/
 </script>
 
 <body class="corp h-100">
+
     <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
 
         <div class="container">
@@ -432,12 +395,7 @@
                 <li class="social"><a href="#contact-section" class="nav-link"><span class="icon-twitter"></span></a></li>-->
                             <li class="mr-3">
                                 <a href="index.html" class="nav-link">
-                                    
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                                        class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                    </svg>
+                                   <img src="images/house-door-fill.svg" alt="" width="50px">
                                 </a>
                             </li>
                         </ul>

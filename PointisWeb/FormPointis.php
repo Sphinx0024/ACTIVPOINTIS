@@ -8,9 +8,49 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>POINTIS</title>
   <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="#">
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="#"> -->
   <link href="css/FormPointis.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
+  
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+
+  <style>
+    .overlayer-none,
+    .loader-none {
+      display: none;
+    }
+
+    .overlayer {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      z-index: 7100;
+      background: rgba(255, 255, 255, 0.4);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .loader {
+      z-index: 7700;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  </style>
 
   <script type="text/javascript">
     var onloadCallback = function() {
@@ -33,6 +73,12 @@
 
 
   <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+    <div class="overlayer-none"></div>
+    <div class="loader-none">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
 
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -161,9 +207,11 @@
           </div>
           <div class="formbold-input-flex">
 
-            <div class="custom-select">
-              <label for="lastname" class="formbold-form-label "> Sexe </label>
-              <select id="sex_admin" style="width:75%;height:75%;">
+            <!-- <div class="custom-select"> -->
+            <div>
+              <label for="sex_admin" class="formbold-form-label ">Sexe</label>
+              <select id="sex_admin" class="formbold-form-input">
+                <option value="" class="text-center">--Selectionnez votre genre--</option>
                 <option value="M" class="text-center">Masculin</option>
                 <option value="F" class="text-center">Feminin</option>
 
@@ -312,7 +360,7 @@
         Body: ebody
       }).then(
 
-        message => location.replace('./inscriptionreussi.html')
+        message => location.replace('./succes.php')
         //message => location.replace('./succes.php')
         //message => alert(message)
       );
@@ -344,13 +392,16 @@
       var ne = document.getElementById('user_name').value;
       var r = document.getElementById('RCCM').value;
       var l = document.getElementById('localisation').value;
-      var e = document.getElementById('email').value
-      var t = document.getElementById('tel_entreprise').value
-      var n = document.getElementById('nom_admin').value
-      var p = document.getElementById('prenom_admin').value
-      var ep = document.getElementById('email_admin').value
-      var tp = document.getElementById('tel_admin').value
-      var s = document.getElementById('sex_admin').value
+      var e = document.getElementById('email').value;
+      var t = document.getElementById('tel_entreprise').value;
+      var n = document.getElementById('nom_admin').value;
+      var p = document.getElementById('prenom_admin').value;
+      var ep = document.getElementById('email_admin').value;
+      var tp = document.getElementById('tel_admin').value;
+      var s = document.getElementById('sex_admin').value;
+
+      document.querySelector('.overlayer-none').className = 'overlayer';
+      document.querySelector('.loader-none').className = 'loader';
 
 
       var data = {
@@ -366,6 +417,8 @@
         Sexe: s,
 
       };
+
+  
 
       fetch('https://face.activactions.net/api/Societe/Inscription', {
           method: 'POST',

@@ -57,15 +57,73 @@
         }
 
         if (t != '' && selectedId != 0) {
-            fetch('https://face.activactions.net/api/Employes/Post/' + socID, {
+            fetch('https://face.activactions.net/api/Employes/Add/' + socID, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
-            alert("Enregistrement reussi !");
+            // alert("Enregistrement reussi !");
+
+
+
+
+            function sendMail() {
+
+                // const raisonSoConst = document.getElementById("user_name").value;
+                // const emailEntConst = document.getElementById("Email").value;
+                const preAdConst = document.getElementById("Prenom").value;
+                const nomAdConst = document.getElementById("Nom").value;
+                const emailAdConst = document.getElementById("Email").value;
+                const space = " ";
+                //const defaultMDPConst = password;
+                const lien = "https://";
+                //format text 
+                let ebody = `
+                        <p>Cher, </p> ${preAdConst} ${space} ${nomAdConst}
+                        <br />
+                        <p>Vous venez d'etre enregistré sur Pointis comme Employé</p>
+                        <br />
+                        <p>Veuillez cliquez sur ce <a href="${lien}">lien</a> pour télécharger l'application</p> 
+                        <br>
+                        <p>Cordialement.</p>
+                        <br/>
+                        <center>@Pointis</center>
+                        `
+
+                // Use token method
+                Email.send({
+                    SecureToken: "193b80ea-7547-40a3-bafa-b8eb082adeb5",
+                    To: emailAdConst,
+                    From: 'pointisapp@gmail.com',
+                    Subject: "Enregistrement de " + preAdConst + " sur POINTIS !",
+                    Body: ebody
+                }).then(
+
+                    message => alert("Enregistrement reussi !!")
+                    //message => location.replace('./succes.php')
+                    //message => alert(message)
+                );
+                //location.replace('./succes.php');
+            }
+
+            sendMail();
+
+
+            $.ajax({
+                url: 'pages/listeEmploye.html',
+                method: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#show').html(data);
+                },
+                error: function () {
+                    $('#show').html('Erreur lors du chargement des données.');
+                }
+            });
             //location.replace('index.html');
+
         }
 
     }
@@ -93,8 +151,21 @@
             },
             body: JSON.stringify(data)
         });
+
         alert("Enregistrement reussi !");
         //location.replace('index.html');
+
+        $.ajax({
+            url: 'pages/listeHoraire.html',
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#show').html(data);
+            },
+            error: function () {
+                $('#show').html('Erreur lors du chargement des données.');
+            }
+        });
     }
 
     function ajouterUtilisateur() {
@@ -118,7 +189,67 @@
             },
             body: JSON.stringify(data)
         });
-        alert("Enregistrement reussi !");
+
+
+        /*
+
+        function sendMailUtilisateur() {
+
+            // const raisonSoConst = document.getElementById("user_name").value;
+            // const emailEntConst = document.getElementById("Email").value;
+            const preAdConst = document.getElementById("Prenom").value;
+            const nomAdConst = document.getElementById("Nom").value;
+            const emailAdConst = document.getElementById("Email").value;
+            const space = " ";
+            //const defaultMDPConst = password;
+            const lien = "https://";
+            //format text 
+            let ebody = `
+          <p>Cher, </p> ${preAdConst} ${space} ${nomAdConst}
+          <br />
+          <p>Vous venez d'etre enregistré sur Pointis comme Employé</p>
+          <br />
+          <p>Veuillez cliquez sur ce <a href="${lien}">lien</a> pour télécharger l'application</p> 
+          <br>
+          <p>Cordialement.</p>
+          <br/>
+          <center>@Pointis</center>
+          `
+
+            // Use token method
+            Email.send({
+                SecureToken: "193b80ea-7547-40a3-bafa-b8eb082adeb5",
+                To: emailAdConst,
+                From: 'pointisapp@gmail.com',
+                Subject: "Enregistrement de " + preAdConst + " sur POINTIS !",
+                Body: ebody
+            }).then(
+
+                message => alert("Enregistrement reussi !!")
+                //message => location.replace('./succes.php')
+                //message => alert(message)
+            );
+            //location.replace('./succes.php');
+        }
+
+        sendMailUtilisateur();
+
+        // alert("Enregistrement reussi !");
+
+        */
+
+
+        $.ajax({
+            url: 'pages/listeUtilisateur.html',
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#show').html(data);
+            },
+            error: function () {
+                $('#show').html('Erreur lors du chargement des données.');
+            }
+        });
         //location.replace('index.html');
     }
 
@@ -139,6 +270,18 @@
             });
             alert("Cet élément a été supprimé ");
             //location.replace('index.html');
+
+            $.ajax({
+                url: 'pages/' + lien,
+                method: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#show').html(data);
+                },
+                error: function () {
+                    $('#show').html('Erreur lors du chargement des données.');
+                }
+            });
         }
         else {
             alert("la suppression a été annulée");
@@ -207,22 +350,22 @@
     function editEmployes() {
         var EmployesID = sessionStorage.getItem("edit");
 
-        var a = document.getElementById("Sexe");
+        var a = document.getElementById("SexeUpdate");
         var valeurselectionnee = a.options[a.selectedIndex].value;
         var textselectionne = a.options[a.selectedIndex].text;
 
-        var combo = document.getElementById("equipe");
+        var combo = document.getElementById("equipeUpdate");
         var selected = combo.options[combo.selectedIndex];
         var selectedId = selected.getAttribute("attr.data-value");
 
         // let z = sessionStorage.getItem("u");
-        var t = document.getElementById("Nom").value;
-        var d = document.getElementById("Prenom").value;
-        var turn = document.getElementById("Email").value;
-        var p = document.getElementById("Telephone").value;
-        var title = document.getElementById("Titre").value;
+        var t = document.getElementById("NomUpdate").value;
+        var d = document.getElementById("PrenomUpdate").value;
+        var turn = document.getElementById("EmailUpdate").value;
+        var p = document.getElementById("TelephoneUpdate").value;
+        var title = document.getElementById("TitreUpdate").value;
         //  var r = document.getElementById("SocieteID").value;
-        var l = document.getElementById("Matricule").value;
+        var l = document.getElementById("MatriculeUpdate").value;
 
         var data = {
 
@@ -246,16 +389,28 @@
                 body: JSON.stringify(data)
             });
             alert("Modification reussi !");
+
+            $.ajax({
+                url: 'pages/listeEmploye.html',
+                method: 'GET',
+                dataType: 'html',
+                success: function (data) {
+                    $('#show').html(data);
+                },
+                error: function () {
+                    $('#show').html('Erreur lors du chargement des données.');
+                }
+            });
             //location.replace('index.html');
         }
 
     }
 
     function editUtilisateur() {
-        var t = document.getElementById("logUtilisateur").value;
-        var d = document.getElementById("passUtilisateur").value;
+        var t = document.getElementById("logUtilisateurUpdate").value;
+        var d = document.getElementById("passUtilisateurUpdate").value;
 
-        var a = document.getElementById("roleUtilisateur");
+        var a = document.getElementById("roleUtilisateurUpdate");
         var valeurselectionnee = a.options[a.selectedIndex].value;
         var textselectionne = a.options[a.selectedIndex].text;
 
@@ -277,23 +432,33 @@
             body: JSON.stringify(data)
         });
         alert("Modification reussi !");
+
+        $.ajax({
+            url: 'pages/listeUtilisateur.html',
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#show').html(data);
+            },
+            error: function () {
+                $('#show').html('Erreur lors du chargement des données.');
+            }
+        });
         //location.replace('index.html');
     }
-
 
     function editHoraire() {
         var EquipeID = sessionStorage.getItem("edit");
 
-        var titre = document.getElementById("Titre-horaire").value;
-        var debs = document.getElementById("debs").value;
-        var fins = document.getElementById("fins").value;
+        var titre = document.getElementById("Titre-horaireUpdate").value;
+        var debs = document.getElementById("debshoraireUpdate").value;
+        var fins = document.getElementById("finshoraireUpdate").value;
 
         var data = {
             Title: titre,
             HeureDebutService: debs,
             HeureFinService: fins,
             SocieteID: socID
-
         }
 
 
@@ -305,6 +470,18 @@
             body: JSON.stringify(data)
         });
         alert("Modification reussi !");
+
+        $.ajax({
+            url: 'pages/listeHoraire.html',
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#show').html(data);
+            },
+            error: function () {
+                $('#show').html('Erreur lors du chargement des données.');
+            }
+        });
         //location.replace('index.html');
 
 
@@ -382,80 +559,7 @@
     </div>
 
     <div class="row d-flex flex-row m-3" id="show">
-        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" id="addEmploye">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
-                class="bi bi-person-plus-fill text-light" viewBox="0 0 16 16">
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                <path fill-rule="evenodd"
-                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-            </svg>
-            <span>Ajouter un employe</span>
-        </button>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Ajouter un employé</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body" id="showAddEmployes">
-
-            </div>
-        </div>
-        <script>
-
-
-        </script>
-        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightTwo" aria-controls="offcanvasRight"
-            id="addHoraire">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
-                class="bi bi-clock-fill text-light" viewBox="0 0 16 16">
-                <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-            </svg>
-            <span>Ajouter horaire</span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightTwo" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Ajouter une horaire</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body" id="showAddHoraire">
-
-            </div>
-        </div>
-        <script>
-
-        </script>
-        <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightThree" aria-controls="offcanvasRight"
-            id="addUtilisateur">
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
-                class="bi bi-person-plus-fill text-light" viewBox="0 0 16 16">
-                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                <path fill-rule="evenodd"
-                    d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-            </svg>
-            <span>Ajouter utilisateur</span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightThree"
-            aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasRightLabel">Ajouter un utilisateur</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                    aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body" id="showAddUtilisateur">
-
-            </div>
-        </div>
-
-        <script>
-
-        </script>
         <button class="col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" id="showEmploye">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                 class="bi bi-person-vcard-fill text-light" viewBox="0 0 16 16">
@@ -502,7 +606,7 @@
     $(document).ready(function () {
         $('#addEmploye').click(function () {
             $.ajax({
-                url: './pages/addEmploye.html',
+                url: 'pages/addEmploye.html',
                 method: 'GET',
                 dataType: 'html',
                 success: function (data) {
@@ -518,7 +622,7 @@
     $(document).ready(function () {
         $('#addHoraire').click(function () {
             $.ajax({
-                url: './pages/addHoraire.html',
+                url: 'pages/addHoraire.html',
                 method: 'GET',
                 dataType: 'html',
                 success: function (data) {
@@ -535,7 +639,7 @@
     $(document).ready(function () {
         $('#addUtilisateur').click(function () {
             $.ajax({
-                url: './pages/addUtilisateur.html',
+                url: 'pages/addUtilisateur.html',
                 method: 'GET',
                 dataType: 'html',
                 success: function (data) {

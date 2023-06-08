@@ -1,3 +1,61 @@
+<div class="row">
+    <button class="btn col-2 d-flex flex-row btn btn-para text-uppercase text-light mt-2" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightThree" aria-controls="offcanvasRight"
+        id="addUtilisateur">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-person-plus-fill text-light" viewBox="0 0 16 16">
+            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+            <path fill-rule="evenodd"
+                d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+        </svg>
+        <span>Ajouter utilisateur</span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightThree" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Ajouter un utilisateur</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- <div class="offcanvas-body" id="showAddUtilisateur"> -->
+            <form action="" method="" class="col-12 d-flex flex-column">
+                <div class="d-flex flex-row justify-content-between flex-wrap bg-light m-2 p-2">
+                    <div class="input-block d-flex flex-column">
+                        <label for="logUtilisateur" class="">Login</label>
+                        <input type="text" class="form-control" id="logUtilisateur" name="logUtilisateur"
+                            placeholder="">
+                    </div>
+                    <div class="input-block d-flex flex-column">
+                        <label for="passUtilisateur" class="">Mot de passe</label>
+                        <input type="text" class="form-control" id="passUtilisateur" name="passUtilisateur"
+                            placeholder="">
+                    </div>
+                    <div class="input-block d-flex flex-column">
+                        <label for="roleUtilisateur" class="">Role</label>
+                        <select name="" id="roleUtilisateur" class="form-control">
+                            <option value="">-- Veuillez choisir le role de l'utilisateur --</option>
+                            <option value="">Administrateur</option>
+                            <option value="">Utilisateur</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-block d-flex flex-column align-self-start">
+                    <input type="button" id="envoyer" onclick="ajouterUtilisateur();"
+                        class="align-self-end btn btn-primary border-0 form-control" value="Envoyer" />
+                </div>
+            </form>
+
+
+            <script>
+                document.getElementById('add').innerHTML = 'Ajouter utilisateurs';
+
+            </script>
+
+        </div>
+    </div>
+
+</div>
+
 <div class="table-responsive">
     <table class="table  ">
         <thead style="border-color: transparent;">
@@ -19,10 +77,12 @@
                         for (let item of data) {
                             infosUser +=
                                 `<tr>
-                                    <td>${item.Login}</td><td>${item.Password}</td><td>${item.Role}</td>
+                                    <td>${item.Login}</td>
+                                    <td>${item.Password}</td>
+                                    <td>${item.Role}</td>
                                     <td><button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightUpdate" aria-controls="offcanvasRight" class="btn" Onclick="modifier(${item.ConnexionID},'updateUtilisateur')" style="padding: 10px 10px ;margin-left:115%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/crayon.png" class="img-fluid" width="40px" alt="" id="update"></button></td>
                                     <td><button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightBadge" aria-controls="offcanvasRight" class="btn" Onclick="badgeMail('${item.Login}','qrcode.html')" style="display:block;padding: 10px 10px ;margin-left:75%;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/des-employes.png" class="img-fluid"  width="40px" alt="" id="badge"></button></td>
-                                    <td><button class="btn" Onclick="supprimer('https://face.activactions.net/api/Connexion/Delete',${item.ConnexionID},'affichageutilisateur')" style="display:block;padding: 10px 10px ;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/supprimer.png" class="img-fluid" width="40px" alt=""></button></td>
+                                    <td><button class="btn" Onclick="supprimer('https://face.activactions.net/api/Connexion/Delete',${item.ConnexionID},'listeUtilisateur.html')" style="display:block;padding: 10px 10px ;background-color:#F3F3F9;border-color:darkgray;width:40px"><img src="image/supprimer.png" class="img-fluid" width="40px" alt=""></button></td>
                                 </tr>`;
                         }
                         document.getElementById('corpsUser').innerHTML = infosUser;

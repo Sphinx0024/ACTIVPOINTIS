@@ -334,7 +334,7 @@
                                 let infosEquipe = '';
                                 console.log(data);
                                 for (let item of data) {
-                                    infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td><td onclick="voir('${item.EmployeID}')"><button class ="btn btn-light">Détail</button></td></tr>`;
+                                    infosEquipe += `<tr><td>${formatComplet(item.PointageJour)}</td><td>${item.EmployeNom}</td><td>${item.EmployePrenom}</td><td>${item.EmployeTelephone}</td><td>${formatHeure(item.PointageHeureEntree)}</td><td>${formatHeure(item.PointageHeureSortie)}</td><td onclick="voir('${item.EmployeID}')"><button class ="btn btn-light"><img src="image/apercu.png" width="20px"/></button></td></tr>`;
 
                                 }
                                 document.getElementById('corpequipeall').innerHTML = infosEquipe;
